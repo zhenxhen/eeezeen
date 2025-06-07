@@ -1,8 +1,6 @@
 'use client';
 
-import { useState } from 'react';
 import { useNavigation } from '../../components/LeftNavigation';
-import { a } from 'framer-motion/m';
 
 export default function About() {
   const { isCollapsed } = useNavigation();
