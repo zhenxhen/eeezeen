@@ -1,9 +1,6 @@
-// 프로덕션 환경에서 GitHub Pages basePath 적용
-const isProduction = process.env.NODE_ENV === 'production';
-const BASE_PATH = isProduction ? '/eeezeen' : '';
-
 export const getAssetPath = (path: string): string => {
-  return `${BASE_PATH}${path}`;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+  return `${basePath}${path}`;
 };
 
 export const getImagePath = (imagePath: string): string => {

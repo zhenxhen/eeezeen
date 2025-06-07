@@ -244,7 +244,7 @@ export default function LeftNavigation() {
           }}
         >
           <Image 
-            src="/project/icons/expand.png" 
+            src={getImagePath("/project/icons/expand.png")} 
             alt="메뉴 열기" 
             width={16}
             height={16}
