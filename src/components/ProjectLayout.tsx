@@ -49,7 +49,7 @@ export default function ProjectLayout({
       {/* Project Images */}
       <div className="project-images-grid">
         {images.map((image, index) => (
-          <div key={index} className="project-image-container">
+          <div key={`${projectName}-image-${index}`} className="project-image-container">
             <Image
               src={image}
               alt={`${projectName} ${index + 1}`}
@@ -67,7 +67,7 @@ export default function ProjectLayout({
           {projectName.toUpperCase()} ({year})
         </h1>
         <blockquote className="project-subtitle">
-          "{subtitle}"
+          &quot;{subtitle}&quot;
         </blockquote>
         <div className="project-description">
           {description}
@@ -79,7 +79,7 @@ export default function ProjectLayout({
         <h3>&lt;Tools&gt;</h3>
         <div className="project-tools-list">
           {tools.map((tool, index) => (
-            <div key={index}>
+            <div key={`${projectName}-tool-${index}`}>
               {tool}
             </div>
           ))}

@@ -95,10 +95,10 @@ export default function Home() {
             transition: 'padding-left 0.3s ease'
           }}
         >
-          <h2 className="font-normal mb-16 text-pink">"Humanizing Technology"</h2>
+          <h2 className="font-normal mb-16 text-pink">&quot;Humanizing Technology&quot;</h2>
           <div className="max-w-xl">
             <p className="mb-6 leading-relaxed">
-              I'm Jinwon Lee (<a target="_blank" href="https://www.instagram.com/eeezeen/" className="text-blue" style={{ textDecoration: 'underline', margin: '0px' }}>@eeezeen</a>), An AI Design engineer Technology follows where life leads.<br />
+              I&apos;m Jinwon Lee (<a target="_blank" href="https://www.instagram.com/eeezeen/" className="text-blue" style={{ textDecoration: 'underline', margin: '0px' }}>@eeezeen</a>), An AI Design engineer Technology follows where life leads.<br />
               Envisioning a future where computers reflect the essence of humanity.<br />
               Based in Seoul and London.
             </p>

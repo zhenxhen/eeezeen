@@ -224,7 +224,7 @@ export default function About() {
           <h3 className="font-normal mb-12">&lt;<span className="text-blue">Experience</span>&gt;</h3>
           
           <div className="pl-6 space-y-6" style={{ borderLeft: '1px solid #4b5563'}}>
-            {experiences.map((exp, index) => (
+            {experiences.map((exp) => (
               <div key={exp.id} style={{ marginBottom: '2rem' }}>
                 <div className="flex items-start" style={{ marginBottom: '-0.75rem' }}>
                   <p className="text-blue mb-2 border-l-0">{exp.company}</p>
@@ -250,7 +250,7 @@ export default function About() {
           <h3 className="font-normal mb-12">&lt;<span className="text-yellow">Education</span>&gt;</h3>
           
           <div className="pl-6 space-y-6" style={{ borderLeft: '1px solid #4b5563'}}>
-            {education.map((edu, index) => (
+            {education.map((edu) => (
               <div key={edu.id} style={{ marginBottom: '2rem' }}>
                 <div className="flex items-start" style={{ marginBottom: '-0.75rem' }}>
                   <p className="text-yellow mb-2 border-l-0">{edu.school}</p>
@@ -275,7 +275,7 @@ export default function About() {
           <h3 className="font-normal mb-12">&lt;<span className="text-purple">Awards</span>&gt;</h3>
           
           <div className="pl-6 space-y-6" style={{ borderLeft: '1px solid #4b5563'}}>
-            {awards.map((award, index) => (
+            {awards.map((award) => (
               <div key={award.id} style={{ marginBottom: '2rem' }}>
                 <div className="flex items-start" style={{ marginBottom: '-0.75rem' }}>
                   <p className="text-purple mb-2 border-l-0">{award.title}</p>
@@ -300,11 +300,11 @@ export default function About() {
           <h3 className="font-normal mb-12">&lt;<span className="text-blue">Exhibition</span>&gt;</h3>
           
           <div className="pl-6 space-y-6" style={{ borderLeft: '1px solid #4b5563'}}>
-            {exhibitions.map((exhibition, index) => (
+            {exhibitions.map((exhibition) => (
               <div key={exhibition.id} style={{ marginBottom: '2rem' }}>
                 <div className="flex items-start" style={{ marginBottom: '-0.75rem' }}>
                   <p className="text-blue mb-2 border-l-0">{exhibition.title}</p>
-                  <p className="text-gray-500 text-sm border-l-0">// {exhibition.organization}</p>
+                  <p className="text-gray-500 text-sm border-l-0">{/* // */} {exhibition.organization}</p>
                 </div>
                 <p className="text-white mb-1 border-l-0">{exhibition.project}</p>
                 <p className="text-gray-500 text-sm border-l-0">{exhibition.year}</p>
@@ -325,7 +325,7 @@ export default function About() {
           <h3 className="font-normal mb-12">&lt;<span className="text-pink">Publication & Invited talk</span>&gt;</h3>
           
           <div className="pl-6 space-y-6" style={{ borderLeft: '1px solid #4b5563'}}>
-            {publications.map((publication, index) => (
+            {publications.map((publication) => (
               <div key={publication.id} style={{ marginBottom: '2rem' }}>
                 <div className="flex items-start" style={{ marginBottom: '-0.75rem' }}>
                   <p className="text-pink mb-2 border-l-0">{publication.title}</p>

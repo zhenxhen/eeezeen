@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, createContext, useContext, useEffect } from 'react';
+import { useState, createContext, useContext, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
@@ -105,7 +105,7 @@ export default function LeftNavigation() {
   const pathname = usePathname();
   
   // 현재 경로에 따라 초기 expanded 상태 설정
-  const getInitialExpanded = () => {
+  const getInitialExpanded = useCallback(() => {
     const expanded = new Set<string>();
     if (pathname.startsWith('/works/')) {
       expanded.add('works');
@@ -113,14 +113,14 @@ export default function LeftNavigation() {
       expanded.add('works');
     }
     return expanded;
-  };
+  }, [pathname]);
   
   const [expandedItems, setExpandedItems] = useState<Set<string>>(getInitialExpanded());
 
   // pathname이 변경될 때마다 expanded 상태 업데이트
   useEffect(() => {
     setExpandedItems(getInitialExpanded());
-  }, [pathname]);
+  }, [pathname, getInitialExpanded]);
 
   const isMenuActive = (item: MenuItem) => {
     // 정확한 경로 매칭
