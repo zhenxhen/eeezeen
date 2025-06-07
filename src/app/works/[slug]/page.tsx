@@ -1,25 +1,18 @@
-'use client';
-
 import { notFound } from 'next/navigation';
-import { use, useEffect } from 'react';
 import ProjectLayout from '../../../components/ProjectLayout';
-import { projectDetailData, getProjectIcon } from '../../../data/projects';
+import { projectDetailData, getProjectIcon, allProjects } from '../../../data/projects';
+import ProjectPageClient from './ProjectPageClient';
 
-export default function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = use(params);
+// 정적 사이트 생성을 위한 파라미터 목록
+export function generateStaticParams() {
+  return Object.keys(allProjects).map((slug) => ({
+    slug,
+  }));
+}
+
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
   const projectData = projectDetailData[slug];
-
-  // 페이지 로드 시 스크롤을 맨 위로 초기화
-  useEffect(() => {
-    // MainContent 컨테이너를 찾아서 스크롤 초기화
-    const mainContent = document.querySelector('.flex-1.overflow-auto');
-    if (mainContent) {
-      mainContent.scrollTop = 0;
-    }
-    
-    // 혹시 모를 window 스크롤도 초기화
-    window.scrollTo(0, 0);
-  }, [slug]);
 
   // 존재하지 않는 프로젝트면 404 페이지로 이동
   if (!projectData) {
@@ -30,14 +23,16 @@ export default function ProjectPage({ params }: { params: Promise<{ slug: string
   const projectIcon = getProjectIcon(slug);
 
   return (
-    <ProjectLayout
-      projectName={projectData.projectName}
-      year={projectData.year}
-      subtitle={projectData.subtitle}
-      description={projectData.description}
-      images={projectData.images}
-      tools={projectData.tools}
-      icon={projectIcon}
-    />
+    <ProjectPageClient slug={slug}>
+      <ProjectLayout
+        projectName={projectData.projectName}
+        year={projectData.year}
+        subtitle={projectData.subtitle}
+        description={projectData.description}
+        images={projectData.images}
+        tools={projectData.tools}
+        icon={projectIcon}
+      />
+    </ProjectPageClient>
   );
 } 
