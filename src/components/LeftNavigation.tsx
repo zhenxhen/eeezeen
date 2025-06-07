@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { projectMenuItems } from '../data/projects';
+import { getImagePath } from '../utils/paths';
 
 // 네비게이션 컨텍스트 생성
 interface NavigationContextType {
@@ -49,7 +50,7 @@ const menuItems: MenuItem[] = [
   {
     id: 'about',
     label: 'about me',
-    icon: '/project/icons/about.png',
+    icon: getImagePath('/project/icons/about.png'),
     url: '/about',
     isActive: false,
   },
@@ -64,14 +65,14 @@ const menuItems: MenuItem[] = [
   {
     id: 'contact',
     label: 'contact',
-    icon: '/project/icons/contact.png',
+    icon: getImagePath('/project/icons/contact.png'),
     url: '/contact',
     isActive: false,
   },
   {
     id: 'visitors',
     label: 'visitors',
-    icon: '/project/icons/visitors.png',
+    icon: getImagePath('/project/icons/visitors.png'),
     url: '/visitors',
     isActive: false,
   },
@@ -89,7 +90,7 @@ export const NavigationToggleButton = () => {
       whileTap={{ scale: 0.95 }}
     >
       <Image 
-        src={isCollapsed ? "/project/icons/expand.png" : "/project/icons/collaps.png"} 
+        src={isCollapsed ? getImagePath("/project/icons/expand.png") : getImagePath("/project/icons/collaps.png")} 
         alt={isCollapsed ? "메뉴 열기" : "메뉴 접기"} 
         width={12}
         height={12}
@@ -186,7 +187,7 @@ export default function LeftNavigation() {
               onClick={(e) => handleExpandClick(item.id, e)}
             >
               <Image 
-                src="/project/icons/list_arrow.png" 
+                src={getImagePath("/project/icons/list_arrow.png")} 
                 alt="펼치기/접기" 
                 width={14}
                 height={14}

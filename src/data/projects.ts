@@ -1,3 +1,5 @@
+import { getImagePath } from '../utils/paths';
+
 export interface ProjectMenuItem {
   id: string;
   label: string;
@@ -40,16 +42,16 @@ export const allProjects: Record<string, ProjectData> = {
     main: {
       id: '001',
       title: 'Guansang',
-      thumbnail: '/project/guansang2.png',
-      video: '/project/guansang_video.mp4',
-      image: '/project/guansang2.png',
+      thumbnail: getImagePath('/project/guansang2.png'),
+      video: getImagePath('/project/guansang_video.mp4'),
+      image: getImagePath('/project/guansang2.png'),
       category: ['AI', 'UI', 'Labs'],
       link: '/works/guansang'
     },
     menu: {
       id: 'guansang',
       label: 'Guansang',
-      icon: '/project/icons/guansang.png',
+      icon: getImagePath('/project/icons/guansang.png'),
       url: '/works/guansang'
     },
     detail: {
@@ -62,9 +64,9 @@ This project questions the boundaries between ancient wisdom and contemporary te
 
 The interface provides real-time facial analysis and generates interpretative results based on traditional physiognomy principles, enhanced by AI processing capabilities. This project serves as both a technological experiment and a cultural commentary on the digitization of ancient practices.`,
       images: [
-        '/project/guansang2.png',
-        '/project/guansang2.png',
-        '/project/guansang2.png'
+        getImagePath('/project/guansang2.png'),
+        getImagePath('/project/guansang2.png'),
+        getImagePath('/project/guansang2.png')
       ],
       tools: [
         'Machine Learning',
@@ -79,16 +81,16 @@ The interface provides real-time facial analysis and generates interpretative re
     main: {
       id: '002',
       title: 'REVIEW',
-      thumbnail: '/project/REVIEW.jpg',
-      video: '/project/REVIEW.mp4',
-      image: '/project/REVIEW.jpg',
+      thumbnail: getImagePath('/project/REVIEW.jpg'),
+      video: getImagePath('/project/REVIEW.mp4'),
+      image: getImagePath('/project/REVIEW.jpg'),
       category: ['AI', 'Product'],
       link: '/works/review'
     },
     menu: {
       id: 'review',
       label: 'REVIEW',
-      icon: '/project/icons/review.png',
+      icon: getImagePath('/project/icons/review.png'),
       url: '/works/review'
     },
     detail: {
@@ -101,9 +103,9 @@ As of 2024, global online community users surpassed 5 billion. While digital pop
 
 "REVIEW" is an AI computing project that uses a camera and a compact printer to output the scenes observed by the wearer in a negative and distorted linguistic style. Negative language patterns and malicious comments found in online communities were trained into an AI model. Through this, the project reinterprets language by bringing the online perspective into the real-world view, transforming fluent digital language into continuous printed form and exposing anonymity into a face-to-face context. It conveys a critical message about malicious comments and the negative aspects of internet culture.`,
       images: [
-        '/project/REVIEW.jpg',
-        '/project/REVIEW.jpg',
-        '/project/REVIEW.jpg'
+        getImagePath('/project/REVIEW.jpg'),
+        getImagePath('/project/REVIEW.jpg'),
+        getImagePath('/project/REVIEW.jpg')
       ],
       tools: [
         'Python',
@@ -116,16 +118,16 @@ As of 2024, global online community users surpassed 5 billion. While digital pop
     main: {
       id: '003',
       title: 'Finger Controller',
-      thumbnail: '/project/finger.jpg',
-      video: '/project/finger.mp4',
-      image: '/project/finger.jpg',
+      thumbnail: getImagePath('/project/finger.jpg'),
+      video: getImagePath('/project/finger.mp4'),
+      image: getImagePath('/project/finger.jpg'),
       category: ['Labs'],
       link: '/works/finger-controller'
     },
     menu: {
       id: 'finger-controller',
       label: 'Finger Controller',
-      icon: '/project/icons/finger.png',
+      icon: getImagePath('/project/icons/finger.png'),
       url: '/works/finger-controller'
     },
     detail: {
@@ -140,9 +142,9 @@ This project aims to create a more intuitive and accessible way of interacting w
 
 The technology has applications in virtual reality, augmented reality, smart home control, and accessibility solutions, representing a step towards more human-centered computing experiences.`,
       images: [
-        '/project/finger.jpg',
-        '/project/finger.jpg',
-        '/project/finger.jpg'
+        getImagePath('/project/finger.jpg'),
+        getImagePath('/project/finger.jpg'),
+        getImagePath('/project/finger.jpg')
       ],
       tools: [
         'OpenCV',
