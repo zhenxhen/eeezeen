@@ -46,7 +46,7 @@ interface MenuItem {
 }
 
 // 현재 경로에 따라 이미지 경로를 조정하는 함수
-const getNavigationImagePath = (path: string, currentPath: string) => {
+const getNavigationImagePath = (path: string) => {
   // 이미 절대 경로인 경우 그대로 반환
   if (path.startsWith('/')) {
     return path;
@@ -57,27 +57,8 @@ const getNavigationImagePath = (path: string, currentPath: string) => {
     return path;
   }
   
-  // 현재 경로의 깊이에 따라 상대 경로 조정
-  const pathSegments = currentPath.split('/').filter(segment => segment !== '');
-  
-  // 메인 페이지 ('/') 인 경우
-  if (pathSegments.length === 0) {
-    return path;
-  }
-  
-  // 작품 상세 페이지 ('/works/slug') 인 경우
-  if (pathSegments.length === 2 && pathSegments[0] === 'works') {
-    return `../../${path}`;
-  }
-  
-  // 기타 한 단계 깊은 페이지 ('/about', '/contact' 등) 인 경우
-  if (pathSegments.length === 1) {
-    return `../${path}`;
-  }
-  
-  // 기본값: 현재 경로의 깊이만큼 ../ 추가
-  const upDirs = '../'.repeat(pathSegments.length);
-  return `${upDirs}${path}`;
+  // GitHub Pages basePath를 포함한 절대 경로로 통일
+  return `/eeezeen/${path}`;
 };
 
 const menuItems: MenuItem[] = [
@@ -115,7 +96,6 @@ const menuItems: MenuItem[] = [
 // 토글 버튼 컴포넌트
 export const NavigationToggleButton = () => {
   const { isCollapsed, toggleNavigation } = useNavigation();
-  const pathname = usePathname();
 
   return (
     <motion.button
@@ -125,7 +105,7 @@ export const NavigationToggleButton = () => {
       whileTap={{ scale: 0.95 }}
     >
       <Image 
-        src={getNavigationImagePath(isCollapsed ? "project/icons/expand.png" : "project/icons/collaps.png", pathname)} 
+        src={getNavigationImagePath(isCollapsed ? "project/icons/expand.png" : "project/icons/collaps.png")} 
         alt={isCollapsed ? "메뉴 열기" : "메뉴 접기"} 
         width={12}
         height={12}
@@ -222,7 +202,7 @@ export default function LeftNavigation() {
               onClick={(e) => handleExpandClick(item.id, e)}
             >
               <Image 
-                src={getNavigationImagePath("project/icons/list_arrow.png", pathname)} 
+                src={getNavigationImagePath("project/icons/list_arrow.png")} 
                 alt="펼치기/접기" 
                 width={14}
                 height={14}
@@ -234,7 +214,7 @@ export default function LeftNavigation() {
           {item.icon && item.icon.trim() !== '' && (
             <span className="left-nav-item-icon inline-block">
               <Image 
-                src={getNavigationImagePath(item.icon, pathname)} 
+                src={getNavigationImagePath(item.icon)} 
                 alt={item.label} 
                 width={16}
                 height={16}
@@ -279,7 +259,7 @@ export default function LeftNavigation() {
           }}
         >
           <Image 
-            src={getNavigationImagePath("project/icons/expand.png", pathname)} 
+            src={getNavigationImagePath("project/icons/expand.png")} 
             alt="메뉴 열기" 
             width={16}
             height={16}

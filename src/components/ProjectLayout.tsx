@@ -20,9 +20,8 @@ const getImagePath = (path: string) => {
     return path;
   }
   
-  // 상대 경로인 경우 basePath를 포함한 절대 경로로 변환
-  // 작품 상세 페이지는 /works/[slug]/ 경로에 있으므로 ../../를 추가
-  return `../../${path}`;
+  // GitHub Pages basePath를 포함한 절대 경로로 통일
+  return `/eeezeen/${path}`;
 };
 
 export default function ProjectLayout({
