@@ -1,6 +1,7 @@
 'use client';
 
 import { useNavigation } from '../../components/LeftNavigation';
+import { getResponsivePadding, getSectionClasses } from '../../utils/layoutUtils';
 
 export default function WorksLayout({
   children,
@@ -12,11 +13,8 @@ export default function WorksLayout({
   return (
     <div className="min-h-screen bg-black text-white">
       <div 
-        className="pr-12 pl-6 py-8"
-        style={{
-          paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-          transition: 'padding-left 0.3s ease'
-        }}
+        className={getSectionClasses()}
+        style={getResponsivePadding(isCollapsed)}
       >
         {children}
       </div>

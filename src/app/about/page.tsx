@@ -1,6 +1,7 @@
 'use client';
 
 import { useNavigation } from '../../components/LeftNavigation';
+import { getResponsivePadding, getSectionClasses } from '../../utils/layoutUtils';
 
 export default function About() {
   const { isCollapsed } = useNavigation();
@@ -177,10 +178,7 @@ export default function About() {
         {/* Header */}
         <header 
           className="flex justify-between header-align pr-12 pl-6 py-8"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          style={getResponsivePadding(isCollapsed)}
         >
           <div className="header-left">
             <h1 className="font-normal">eeezeen</h1>
@@ -197,10 +195,7 @@ export default function About() {
         {/* Hero Section */}
         <section 
           className="pr-12 pl-6 py-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          style={getResponsivePadding(isCollapsed)}
         >
           <div className="max-w-2xl">
             <p className="mb-6 leading-relaxed">
@@ -213,11 +208,8 @@ export default function About() {
 
         {/* Experience Section */}
         <section 
-          className="pr-12 pl-6 py-8 mb-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          className={getSectionClasses('mb-16')}
+          style={getResponsivePadding(isCollapsed)}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-blue">Experience</span>&gt;</h3>
           
@@ -239,11 +231,8 @@ export default function About() {
 
         {/* Education Section */}
         <section 
-          className="pr-12 pl-6 py-8 mb-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          className={getSectionClasses('mb-16')}
+          style={getResponsivePadding(isCollapsed)}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-yellow">Education</span>&gt;</h3>
           
@@ -264,11 +253,8 @@ export default function About() {
 
         {/* Awards Section */}
         <section 
-          className="pr-12 pl-6 py-8 mb-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          className={getSectionClasses('mb-16')}
+          style={getResponsivePadding(isCollapsed)}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-purple">Awards</span>&gt;</h3>
           
@@ -289,11 +275,8 @@ export default function About() {
 
         {/* Exhibition Section */}
         <section 
-          className="pr-12 pl-6 py-8 mb-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          className={getSectionClasses('mb-16')}
+          style={getResponsivePadding(isCollapsed)}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-blue">Exhibition</span>&gt;</h3>
           
@@ -314,11 +297,8 @@ export default function About() {
 
         {/* Publication & Invited Talk Section */}
         <section 
-          className="pr-12 pl-6 py-8 mb-16"
-          style={{
-            paddingLeft: isCollapsed ? '6rem' : '1.5rem',
-            transition: 'padding-left 0.3s ease'
-          }}
+          className={getSectionClasses('mb-16')}
+          style={getResponsivePadding(isCollapsed)}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-pink">Publication & Invited talk</span>&gt;</h3>
           

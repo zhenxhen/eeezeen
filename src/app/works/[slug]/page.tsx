@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import ProjectLayout from '../../../components/ProjectLayout';
-import { projectDetailData, getProjectIcon, allProjects } from '../../../data/projects';
+import { projectDetailData, getProjectIcon, allProjects } from '../../../data';
 import ProjectPageClient from './ProjectPageClient';
 
 // 정적 사이트 생성을 위한 파라미터 목록

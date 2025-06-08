@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { getProjectImagePath } from '../utils/pathUtils';
 
 interface ProjectLayoutProps {
   projectName: string;
@@ -13,16 +14,7 @@ interface ProjectLayoutProps {
   icon?: string;
 }
 
-// 이미지 경로를 GitHub Pages 배포에 맞게 조정하는 함수
-const getImagePath = (path: string) => {
-  // 이미 절대 경로인 경우 그대로 반환
-  if (path.startsWith('/')) {
-    return path;
-  }
-  
-  // GitHub Pages basePath를 포함한 절대 경로로 통일
-  return `/eeezeen/${path}`;
-};
+// 이미지 경로 처리 함수는 utils/pathUtils.ts로 이동됨
 
 export default function ProjectLayout({
   projectName,
@@ -44,7 +36,7 @@ export default function ProjectLayout({
         <span className="text-white inline-flex items-start" style={{ gap: '10px',}}>
           {icon && typeof icon === 'string' && icon.includes('/') ? (
             <Image
-              src={getImagePath(icon)}
+              src={getProjectImagePath(icon)}
               alt={projectName}
               width={16}
               height={16}
@@ -62,7 +54,7 @@ export default function ProjectLayout({
         {images.map((image, index) => (
           <div key={`${projectName}-image-${index}`} className="project-image-container">
             <Image
-              src={getImagePath(image)}
+              src={getProjectImagePath(image)}
               alt={`${projectName} ${index + 1}`}
               width={400}
               height={400}

@@ -4,7 +4,8 @@ import { useState, createContext, useContext, useEffect, useCallback } from 'rea
 import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
-import { projectMenuItems } from '../data/projects';
+import { projectMenuItems } from '../data';
+import { getNavigationImagePath } from '../utils/pathUtils';
 
 // 네비게이션 컨텍스트 생성
 interface NavigationContextType {
@@ -45,21 +46,7 @@ interface MenuItem {
   children?: MenuItem[];
 }
 
-// 현재 경로에 따라 이미지 경로를 조정하는 함수
-const getNavigationImagePath = (path: string) => {
-  // 이미 절대 경로인 경우 그대로 반환
-  if (path.startsWith('/')) {
-    return path;
-  }
-  
-  // 빈 경로인 경우 그대로 반환
-  if (!path || path.trim() === '') {
-    return path;
-  }
-  
-  // GitHub Pages basePath를 포함한 절대 경로로 통일
-  return `/eeezeen/${path}`;
-};
+// 이미지 경로 처리 함수는 utils/pathUtils.ts로 이동됨
 
 const menuItems: MenuItem[] = [
   {
