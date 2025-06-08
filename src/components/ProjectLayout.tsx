@@ -3,13 +3,14 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getProjectImagePath } from '../utils/pathUtils';
+import type { MediaItem } from '../data/types/project';
 
 interface ProjectLayoutProps {
   projectName: string;
   year: string;
   subtitle: string;
   description: string;
-  images: string[];
+  media: MediaItem[];
   tools: string[];
   icon?: string;
 }
@@ -21,7 +22,7 @@ export default function ProjectLayout({
   year,
   subtitle,
   description,
-  images,
+  media,
   tools,
   icon = '📋'
 }: ProjectLayoutProps) {
@@ -49,17 +50,31 @@ export default function ProjectLayout({
         </span>
       </div>
 
-      {/* Project Images */}
-      <div className="project-images-grid">
-        {images.map((image, index) => (
-          <div key={`${projectName}-image-${index}`} className="project-image-container">
-            <Image
-              src={getProjectImagePath(image)}
-              alt={`${projectName} ${index + 1}`}
-              width={400}
-              height={400}
-              className="w-full h-full object-cover"
-            />
+      {/* Project Media Grid */}
+      <div className="project-media-grid">
+        {media.map((mediaItem, index) => (
+          <div 
+            key={`${projectName}-media-${index}`} 
+            className="project-media-container"
+          >
+            {mediaItem.type === 'video' ? (
+              <video
+                src={getProjectImagePath(mediaItem.src)}
+                className="w-full h-full object-cover"
+                autoPlay
+                loop
+                muted
+                playsInline
+              />
+            ) : (
+              <Image
+                src={getProjectImagePath(mediaItem.src)}
+                alt={`${projectName} ${index + 1}`}
+                width={400}
+                height={400}
+                className="w-full h-full object-cover"
+              />
+            )}
           </div>
         ))}
       </div>

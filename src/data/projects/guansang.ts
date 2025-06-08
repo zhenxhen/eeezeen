@@ -25,10 +25,10 @@ export const guansang: ProjectData = {
 This project questions the boundaries between ancient wisdom and contemporary technology, examining how AI can be used to digitize and analyze traditional face-reading practices. Through machine learning algorithms, Guansang attempts to create a modern interpretation of physiognomy while addressing the ethical implications of such technology.
 
 The interface provides real-time facial analysis and generates interpretative results based on traditional physiognomy principles, enhanced by AI processing capabilities. This project serves as both a technological experiment and a cultural commentary on the digitization of ancient practices.`,
-    images: [
-      'project/guansang2.png',
-      'project/guansang2.png',
-      'project/guansang2.png'
+    media: [
+      { type: 'image', src: 'project/guansang2.png' },
+      { type: 'video', src: 'project/guansang_video.mp4' },
+      { type: 'image', src: 'project/guansang2.png' }
     ],
     tools: [
       'Machine Learning',

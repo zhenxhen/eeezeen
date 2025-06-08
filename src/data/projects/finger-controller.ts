@@ -27,10 +27,10 @@ Using advanced computer vision and machine learning algorithms, the system track
 This project aims to create a more intuitive and accessible way of interacting with technology, particularly beneficial for users with mobility limitations or in situations where traditional input methods are impractical. The system demonstrates the future potential of hands-free computing and natural user interfaces.
 
 The technology has applications in virtual reality, augmented reality, smart home control, and accessibility solutions, representing a step towards more human-centered computing experiences.`,
-    images: [
-      'project/finger.jpg',
-      'project/finger.jpg',
-      'project/finger.jpg'
+    media: [
+      { type: 'video', src: 'project/finger.mp4' },
+      { type: 'image', src: 'project/finger.jpg' },
+      { type: 'video', src: 'project/finger.mp4' }
     ],
     tools: [
       'OpenCV',

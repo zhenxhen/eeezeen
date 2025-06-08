@@ -548,30 +548,31 @@ span, a, button, div {
   text-decoration: underline;
 }
 
-.project-images-grid {
+.project-media-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-bottom: 2rem;
 }
 
-.project-image-container {
-  aspect-ratio: 1;
+.project-media-container {
+  width: 80%;
+  margin: 30px auto;
+  aspect-ratio: 1 / 2;
   background-color: #1f2937;
-  border-radius: 0.5rem;
   overflow: hidden;
 }
 
 .project-title {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: normal;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0rem;
   color: #ffffff;
 }
 
 .project-subtitle {
   font-style: italic;
-  color: #9ca3af;
+  color: #87C3FF;
   margin-bottom: 1.5rem;
   border-left: none;
   padding-left: 0;

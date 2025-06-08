@@ -25,10 +25,10 @@ export const review: ProjectData = {
 As of 2024, global online community users surpassed 5 billion. While digital populations are growing due to rapid networking and ease of access, cybercrimes are increasing proportionally. Among these, 49.7% of cybercrimes are attributed to verbal abuse.
 
 "REVIEW" is an AI computing project that uses a camera and a compact printer to output the scenes observed by the wearer in a negative and distorted linguistic style. Negative language patterns and malicious comments found in online communities were trained into an AI model. Through this, the project reinterprets language by bringing the online perspective into the real-world view, transforming fluent digital language into continuous printed form and exposing anonymity into a face-to-face context. It conveys a critical message about malicious comments and the negative aspects of internet culture.`,
-    images: [
-      'project/REVIEW.jpg',
-      'project/REVIEW.jpg',
-      'project/REVIEW.jpg'
+    media: [
+      { type: 'image', src: 'project/REVIEW.jpg' },
+      { type: 'video', src: 'project/REVIEW.mp4' },
+      { type: 'image', src: 'project/REVIEW.jpg' }
     ],
     tools: [
       'Python',
