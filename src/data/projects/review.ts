@@ -26,9 +26,9 @@ As of 2024, global online community users surpassed 5 billion. While digital pop
 
 "REVIEW" is an AI computing project that uses a camera and a compact printer to output the scenes observed by the wearer in a negative and distorted linguistic style. Negative language patterns and malicious comments found in online communities were trained into an AI model. Through this, the project reinterprets language by bringing the online perspective into the real-world view, transforming fluent digital language into continuous printed form and exposing anonymity into a face-to-face context. It conveys a critical message about malicious comments and the negative aspects of internet culture.`,
     media: [
-      { type: 'image', src: 'project/REVIEW.jpg' },
-      { type: 'video', src: 'project/REVIEW.mp4' },
-      { type: 'image', src: 'project/REVIEW.jpg' }
+      { type: 'video', src: 'project/review_1_1.mp4' },
+      { type: 'video', src: 'project/review_2_1.mp4' },
+      { type: 'video', src: 'project/review_3_1.mp4' }
     ],
     tools: [
       'Python',

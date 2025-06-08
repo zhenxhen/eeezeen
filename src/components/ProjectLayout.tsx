@@ -11,6 +11,7 @@ interface ProjectLayoutProps {
   subtitle: string;
   description: string;
   media: MediaItem[];
+  media2?: MediaItem[];
   tools: string[];
   icon?: string;
 }
@@ -23,6 +24,7 @@ export default function ProjectLayout({
   subtitle,
   description,
   media,
+  media2,
   tools,
   icon = '📋'
 }: ProjectLayoutProps) {
@@ -51,7 +53,7 @@ export default function ProjectLayout({
       </div>
 
       {/* Project Media Grid */}
-      <div className="project-media-grid">
+      <div className={`project-media-grid project-media-grid-${media.length}`}>
         {media.map((mediaItem, index) => (
           <div 
             key={`${projectName}-media-${index}`} 
@@ -91,6 +93,37 @@ export default function ProjectLayout({
           {description}
         </div>
       </div>
+
+      {/* Second Project Media Grid (if exists) */}
+      {media2 && media2.length > 0 && (
+        <div className={`project-media-grid project-media-grid-${media2.length}`}>
+          {media2.map((mediaItem, index) => (
+            <div 
+              key={`${projectName}-media2-${index}`} 
+              className="project-media-container"
+            >
+              {mediaItem.type === 'video' ? (
+                <video
+                  src={getProjectImagePath(mediaItem.src)}
+                  className="w-full h-full object-cover"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <Image
+                  src={getProjectImagePath(mediaItem.src)}
+                  alt={`${projectName} second ${index + 1}`}
+                  width={400}
+                  height={400}
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Tools Section */}
       <div className="project-tools">

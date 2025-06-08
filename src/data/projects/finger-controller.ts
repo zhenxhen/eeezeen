@@ -28,9 +28,12 @@ This project aims to create a more intuitive and accessible way of interacting w
 
 The technology has applications in virtual reality, augmented reality, smart home control, and accessibility solutions, representing a step towards more human-centered computing experiences.`,
     media: [
-      { type: 'video', src: 'project/finger.mp4' },
-      { type: 'image', src: 'project/finger.jpg' },
       { type: 'video', src: 'project/finger.mp4' }
+    ],
+    media2: [
+      { type: 'image', src: 'project/finger.jpg' },
+      { type: 'video', src: 'project/finger.mp4' },
+      { type: 'image', src: 'project/finger.jpg' }
     ],
     tools: [
       'OpenCV',

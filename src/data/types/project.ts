@@ -17,6 +17,7 @@ export interface ProjectDetailData {
   subtitle: string;
   description: string;
   media: MediaItem[]; // images 배열을 media 배열로 변경
+  media2?: MediaItem[]; // 두 번째 미디어 배열 (옵셔널)
   tools: string[];
 }
 
