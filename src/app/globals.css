@@ -601,6 +601,7 @@ a:hover {
   font-size: 20px;
   font-weight: normal;
   margin-bottom: 0rem;
+  margin-right: 3rem;
   color: #ffffff;
 }
 
@@ -608,6 +609,7 @@ a:hover {
   font-style: italic;
   color: #87C3FF;
   margin-bottom: 1.5rem;
+  margin-right: 3rem;
   border-left: none;
   padding-left: 0;
 }
@@ -617,25 +619,140 @@ a:hover {
   line-height: 1.6;
   white-space: pre-line;
   margin-bottom: 2rem;
+  margin-right: 3rem;
   border-left: 1px solid #4b5563;
   padding-left: 30px;
 }
 
 .project-tools {
   margin-top: 2rem;
+  opacity: 0.5;
 }
 
 .project-tools h3 {
   color: #ffffff;
   margin-bottom: 1rem;
+  margin-right: 3rem;
 }
 
 .project-tools-list {
   color: #d1d5db;
+  margin-right: 3rem;
   border-left: 1px solid #4b5563;
   padding-left: 30px;
 }
 
 .project-tools-list div {
   margin-bottom: 0.25rem;
+}
+
+/* Wide image layout for media2 */
+.project-media-wide {
+  width: 100%;
+  max-width: 100%;
+  margin: 2rem 0;
+}
+
+.project-media-wide img,
+.project-media-wide video {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Reviews Section */
+.project-reviews {
+  margin: 2rem 0;
+}
+
+.project-reviews h3 {
+  color: #ffffff;
+  margin-bottom: 1rem;
+  /* margin-right: 3rem; */
+  /* border-left: 1px solid #4b5563; */
+  /* padding-left: 30px; */
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-right: 5rem;
+  border-left: 1px solid #4b5563;
+  padding-left: 30px;
+}
+
+.review-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+}
+
+.review-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.review-thumbnail {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #1f2937;
+  overflow: hidden;
+}
+
+.review-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.review-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.review-content {
+  padding: 1rem;
+}
+
+.review-title {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.review-creator {
+  color: #9ca3af;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+@media (max-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 }

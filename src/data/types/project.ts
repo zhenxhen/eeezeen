@@ -11,6 +11,14 @@ export interface MediaItem {
   src: string;
 }
 
+// 리뷰 아이템 타입 정의
+export interface ReviewItem {
+  url: string;
+  title?: string;
+  creator?: string;
+  thumbnail?: string;
+}
+
 export interface ProjectDetailData {
   projectName: string;
   year: string;
@@ -18,6 +26,8 @@ export interface ProjectDetailData {
   description: string;
   media: MediaItem[]; // images 배열을 media 배열로 변경
   media2?: MediaItem[]; // 두 번째 미디어 배열 (옵셔널)
+  media3?: MediaItem[]; // 세 번째 미디어 배열 (가로 긴 이미지용, 옵셔널)
+  reviews?: ReviewItem[]; // YouTube 리뷰 배열 (옵셔널)
   tools: string[];
 }
 
@@ -25,7 +35,7 @@ export interface ProjectMainData {
   id: string;
   title: string;
   thumbnail: string;
-  video: string;
+  video?: string;
   image: string;
   category: string[];
   link: string;
