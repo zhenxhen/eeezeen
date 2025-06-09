@@ -33,6 +33,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         media2={projectData.media2}
         media3={projectData.media3}
         reviews={projectData.reviews}
+        link={projectData.link}
         tools={projectData.tools}
         icon={projectIcon}
       />

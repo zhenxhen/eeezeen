@@ -18,7 +18,7 @@ export const guansang: ProjectData = {
   },
   detail: {
     projectName: "Guansang",
-    year: "2024",
+    year: "2025",
     subtitle: "AI-Powered Physiognomy Interface",
     description: `Guansang is an experimental AI interface that explores the intersection of traditional physiognomy and modern machine learning. The project investigates how artificial intelligence can interpret human facial features and expressions to provide insights into personality traits and emotional states.
 

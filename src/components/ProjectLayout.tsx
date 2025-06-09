@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getProjectImagePath } from '../utils/pathUtils';
 import { fetchMultipleYouTubeInfo } from '../services/youtubeService';
-import type { MediaItem, ReviewItem } from '../data/types/project';
+import type { MediaItem, ReviewItem, LinkItem } from '../data/types/project';
 
 interface YouTubeVideoInfo {
   title: string;
@@ -24,6 +24,7 @@ interface ProjectLayoutProps {
   media2?: MediaItem[];
   media3?: MediaItem[];
   reviews?: ReviewItem[];
+  link?: LinkItem;
   tools: string[];
   icon?: string;
 }
@@ -39,6 +40,7 @@ export default function ProjectLayout({
   media2,
   media3,
   reviews,
+  link,
   tools,
   icon = '📋'
 }: ProjectLayoutProps) {
@@ -140,7 +142,7 @@ export default function ProjectLayout({
                   alt={`${projectName} ${index + 1}`}
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               )}
             </div>
@@ -159,6 +161,20 @@ export default function ProjectLayout({
         <div className="project-description">
           {description}
         </div>
+        
+        {/* External Link */}
+        {link && (
+          <div className="project-link">
+            <a
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link-button"
+            >
+              {link.text}
+            </a>
+          </div>
+        )}
       </div>
 
       {/* Second Project Media Grid (media2 after description) */}
@@ -184,7 +200,7 @@ export default function ProjectLayout({
                   alt={`${projectName} second ${index + 1}`}
                   width={400}
                   height={400}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-contain"
                 />
               )}
             </div>

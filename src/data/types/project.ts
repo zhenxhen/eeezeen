@@ -19,6 +19,12 @@ export interface ReviewItem {
   thumbnail?: string;
 }
 
+// 링크 아이템 타입 정의
+export interface LinkItem {
+  url: string;
+  text: string;
+}
+
 export interface ProjectDetailData {
   projectName: string;
   year: string;
@@ -28,6 +34,7 @@ export interface ProjectDetailData {
   media2?: MediaItem[]; // 두 번째 미디어 배열 (옵셔널)
   media3?: MediaItem[]; // 세 번째 미디어 배열 (가로 긴 이미지용, 옵셔널)
   reviews?: ReviewItem[]; // YouTube 리뷰 배열 (옵셔널)
+  link?: LinkItem; // 외부 링크 (옵셔널)
   tools: string[];
 }
 

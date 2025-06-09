@@ -565,6 +565,7 @@ a:hover {
   gap: 1rem;
   margin-bottom: 2rem;
   justify-content: center;
+  
 }
 
 /* 미디어 개수별 그리드 레이아웃 */
@@ -593,8 +594,11 @@ a:hover {
   width: 80%;
   margin: 30px auto;
   aspect-ratio: 1 / 2;
-  background-color: #1f2937;
+  background-color: transparent;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project-title {
@@ -622,6 +626,26 @@ a:hover {
   margin-right: 3rem;
   border-left: 1px solid #4b5563;
   padding-left: 30px;
+}
+
+.project-link {
+  margin-bottom: 2rem;
+  margin-right: 3rem;
+  padding-left: 30px;
+}
+
+.link-button {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: source-code-pro, monospace;
+  transition: color 0.3s ease;
+}
+
+.link-button:hover {
+  color: #E394DC;
+  text-decoration: none;
 }
 
 .project-tools {

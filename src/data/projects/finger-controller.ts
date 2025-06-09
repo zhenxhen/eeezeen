@@ -18,7 +18,7 @@ export const fingerController: ProjectData = {
   },
   detail: {
     projectName: "Finger Controller",
-    year: "2024",
+    year: "2025",
     subtitle: "Gesture-Based Interface Control",
     description: `Finger Controller is an innovative gesture recognition system that enables users to control digital interfaces through hand and finger movements. This project explores the potential of natural human gestures as a primary input method for computer interaction.
 
