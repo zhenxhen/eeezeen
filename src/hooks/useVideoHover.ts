@@ -50,7 +50,7 @@ export const useVideoHover = (dependencies: React.DependencyList = []) => {
     const timer = setTimeout(initializeVideos, 100);
     
     return () => clearTimeout(timer);
-  }, dependencies);
+  }, [...dependencies]);
 
   return { handleVideoHover };
 }; 

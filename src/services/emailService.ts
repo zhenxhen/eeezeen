@@ -34,13 +34,15 @@ export const sendEmail = async (emailData: EmailData): Promise<boolean> => {
 
     console.log('Email sent successfully:', response);
     return true;
-  } catch (error: any) {
+  } catch (error) {
     console.error('Failed to send email:', error);
-    console.error('Error details:', {
-      text: error.text,
-      status: error.status,
-      message: error.message
-    });
+    if (error && typeof error === 'object') {
+      console.error('Error details:', {
+        text: (error as { text?: string }).text,
+        status: (error as { status?: number }).status,
+        message: (error as { message?: string }).message
+      });
+    }
     return false;
   }
 }; 
