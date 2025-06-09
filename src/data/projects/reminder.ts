@@ -18,7 +18,7 @@ export const reminder: ProjectData = {
   detail: {
     projectName: "Samsung Reminder",
     year: "2024",
-    subtitle: "UX Lead - Samsung Electronics",
+    subtitle: "UX Design : Samsung Electronics",
     description: `Reminder remembers and manages important things in your daily life. From automatic categorization to smart suggestions, it offers a variety of features for a productive day.
 
 This comprehensive reminder application is designed for Samsung's ecosystem, providing seamless integration across multiple device types including mobile phones, tablets, smartwatches, and XR devices. The app features intelligent categorization that automatically sorts reminders based on content and context, making it easier for users to organize their daily tasks.
