@@ -71,13 +71,6 @@ const menuItems: MenuItem[] = [
     url: '/contact',
     isActive: false,
   },
-  {
-    id: 'visitors',
-    label: 'visitors',
-    icon: 'project/icons/visitors.png',
-    url: '/visitors',
-    isActive: false,
-  },
 ];
 
 // 토글 버튼 컴포넌트
@@ -107,23 +100,38 @@ export default function LeftNavigation() {
   const router = useRouter();
   const pathname = usePathname();
   
-  // 현재 경로에 따라 초기 expanded 상태 설정
+  // localStorage에서 사용자의 works 접기/펼치기 상태를 불러오기
   const getInitialExpanded = useCallback(() => {
     const expanded = new Set<string>();
-    if (pathname.startsWith('/works/')) {
-      expanded.add('works');
-    } else if (pathname === '/') {
+    
+    // localStorage에서 저장된 상태 확인
+    if (typeof window !== 'undefined') {
+      const savedWorksState = localStorage.getItem('worksExpanded');
+      if (savedWorksState !== null) {
+        // 사용자가 이전에 설정한 상태가 있으면 그것을 사용
+        if (savedWorksState === 'true') {
+          expanded.add('works');
+        }
+      } else {
+        // 처음 방문하는 경우 기본적으로 works는 열려있음
+        expanded.add('works');
+        localStorage.setItem('worksExpanded', 'true');
+      }
+    } else {
+      // 서버 사이드에서는 기본적으로 열림
       expanded.add('works');
     }
+    
     return expanded;
-  }, [pathname]);
+  }, []);
   
   const [expandedItems, setExpandedItems] = useState<Set<string>>(getInitialExpanded());
 
-  // pathname이 변경될 때마다 expanded 상태 업데이트
+  // pathname 변경 시에는 사용자 상태를 유지 (더 이상 강제로 works를 열지 않음)
   useEffect(() => {
-    setExpandedItems(getInitialExpanded());
-  }, [pathname, getInitialExpanded]);
+    // pathname이 변경되어도 사용자가 설정한 상태를 유지
+    // 아무것도 하지 않음
+  }, [pathname]);
 
   const isMenuActive = (item: MenuItem) => {
     // 정확한 경로 매칭
@@ -148,8 +156,16 @@ export default function LeftNavigation() {
     const newExpanded = new Set(expandedItems);
     if (newExpanded.has(itemId)) {
       newExpanded.delete(itemId);
+      // works의 경우 localStorage에 상태 저장
+      if (itemId === 'works') {
+        localStorage.setItem('worksExpanded', 'false');
+      }
     } else {
       newExpanded.add(itemId);
+      // works의 경우 localStorage에 상태 저장
+      if (itemId === 'works') {
+        localStorage.setItem('worksExpanded', 'true');
+      }
     }
     setExpandedItems(newExpanded);
   };
