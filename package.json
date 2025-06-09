@@ -10,6 +10,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.15.0",
     "next": "15.3.3",
     "react": "^19.0.0",

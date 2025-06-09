@@ -30,11 +30,6 @@ The technology has applications in virtual reality, augmented reality, smart hom
     media: [
       { type: 'video', src: 'project/finger.mp4' }
     ],
-    media2: [
-      { type: 'image', src: 'project/finger.jpg' },
-      { type: 'video', src: 'project/finger.mp4' },
-      { type: 'image', src: 'project/finger.jpg' }
-    ],
     tools: [
       'OpenCV',
       'MediaPipe',
