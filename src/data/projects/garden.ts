@@ -18,7 +18,7 @@ export const garden: ProjectData = {
   detail: {
     projectName: "Garden",
     year: "2021",
-    subtitle: "Team work",
+    subtitle: "Children financial service",
     description: `Garden is a financial service for children. It helps them learn how to manage and cultivate the concept of money, which is often invisible.
 
 This comprehensive financial education application is designed to make abstract financial concepts tangible and understandable for young users. Through gamification and visual metaphors, children can learn fundamental money management skills in an engaging and age-appropriate way.
@@ -33,7 +33,7 @@ The design process focused on creating an intuitive interface that combines educ
     ],
     link: {
       url: 'https://www.behance.net/gallery/110296243/Garden-cultivate-your-budget-UX-UI',
-      text: '>> view in Behance'
+      text: '>> View in Behance'
     },
     tools: [
       'Figma',

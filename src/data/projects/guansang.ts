@@ -26,9 +26,9 @@ This project questions the boundaries between ancient wisdom and contemporary te
 
 The interface provides real-time facial analysis and generates interpretative results based on traditional physiognomy principles, enhanced by AI processing capabilities. This project serves as both a technological experiment and a cultural commentary on the digitization of ancient practices.`,
     media: [
-      { type: 'video', src: 'project/guansang_video.mp4' },
-      { type: 'video', src: 'project/guansang1.mp4' },
-      { type: 'video', src: 'project/guansang2.mp4' }
+      { type: 'video', src: 'project/guansang6.mp4' },
+      { type: 'video', src: 'project/guansang2.mp4' },
+      { type: 'video', src: 'project/guansang1.mp4' }
     ],
     media2: [
       { type: 'image', src: 'project/guansang3.png' },

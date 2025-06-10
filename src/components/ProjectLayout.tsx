@@ -25,6 +25,7 @@ interface ProjectLayoutProps {
   media3?: MediaItem[];
   reviews?: ReviewItem[];
   link?: LinkItem;
+  media4?: MediaItem[];
   tools: string[];
   icon?: string;
 }
@@ -41,6 +42,7 @@ export default function ProjectLayout({
   media3,
   reviews,
   link,
+  media4,
   tools,
   icon = '📋'
 }: ProjectLayoutProps) {
@@ -176,6 +178,34 @@ export default function ProjectLayout({
           </div>
         )}
       </div>
+
+      {/* Fourth Media Section (media4) - 1-column wide layout */}
+      {media4 && media4.length > 0 && (
+        <div className="project-media4">
+          {media4.map((mediaItem, index) => (
+            <div key={`${projectName}-media4-${index}`} className="project-media4-item">
+              {mediaItem.type === 'video' ? (
+                <video
+                  src={getProjectImagePath(mediaItem.src)}
+                  className="w-full h-auto object-contain"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                />
+              ) : (
+                <Image
+                  src={getProjectImagePath(mediaItem.src)}
+                  alt={`${projectName} media4 ${index + 1}`}
+                  width={1200}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+      )}
 
       {/* Second Project Media Grid (media2 after description) */}
       {media2 && media2.length > 0 && (

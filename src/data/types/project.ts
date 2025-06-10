@@ -35,6 +35,7 @@ export interface ProjectDetailData {
   media3?: MediaItem[]; // 세 번째 미디어 배열 (가로 긴 이미지용, 옵셔널)
   reviews?: ReviewItem[]; // YouTube 리뷰 배열 (옵셔널)
   link?: LinkItem; // 외부 링크 (옵셔널)
+  media4?: MediaItem[]; // 네 번째 미디어 배열 (1열 가로 긴 이미지/영상용, 최대 3개, 옵셔널)
   tools: string[];
 }
 

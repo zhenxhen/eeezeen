@@ -591,7 +591,7 @@ a:hover {
 }
 
 .project-media-container {
-  width: 80%;
+  width: 50%;
   margin: 30px auto;
   aspect-ratio: 1 / 2;
   background-color: transparent;
@@ -679,6 +679,32 @@ a:hover {
 
 .project-media-wide img,
 .project-media-wide video {
+  width: 90%;
+  margin: 0 5%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+/* Media4 Section - 1-column wide layout for horizontal images/videos */
+.project-media4 {
+  width: 70%;
+  margin: 20px auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-media4-item {
+  width: 100%;
+  background-color: transparent;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.project-media4-item img,
+.project-media4-item video {
   width: 100%;
   height: auto;
   object-fit: contain;
