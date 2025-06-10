@@ -44,13 +44,16 @@ export const NavigationProvider = ({ children }: { children: React.ReactNode }) 
         return;
       }
       
-      // 태블릿 이하로 전환될 때만 자동으로 접기
+      // 태블릿 이하로 전환될 때 자동으로 접기
       if (isTabletOrBelow && !prevIsMobile) {
         setIsCollapsed(true);
       }
-      // 데스크톱으로 전환될 때 네비게이션 펼치기
+      // 데스크톱으로 전환될 때 네비게이션 펼치기 (애니메이션과 함께)
       else if (!isTabletOrBelow && prevIsMobile) {
-        setIsCollapsed(false);
+        // 짧은 지연 후 펼치기 (모드 전환 애니메이션이 완료된 후)
+        setTimeout(() => {
+          setIsCollapsed(false);
+        }, 100);
       }
     };
 
@@ -341,6 +344,7 @@ export default function LeftNavigation() {
       )}
       
       <motion.div 
+        key={isMobile ? 'mobile' : 'desktop'} // 화면 모드가 변경될 때 컴포넌트 재렌더링
         className="left-nav-container"
         animate={
           isMobile 
@@ -351,18 +355,24 @@ export default function LeftNavigation() {
                 y: "-50%"
               }
             : { 
-                x: isCollapsed ? -260 : 0 
+                x: isCollapsed ? -260 : 0,
+                scale: 1,
+                opacity: 1
               }
         }
         initial={
           isMobile 
             ? { 
-                scale: 0, 
-                opacity: 0,
+                scale: isCollapsed ? 0 : 1, 
+                opacity: isCollapsed ? 0 : 1,
                 x: "-50%",
                 y: "-50%"
               }
-            : { x: 0 }
+            : { 
+                x: isCollapsed ? -260 : 0,
+                scale: 1,
+                opacity: 1
+              }
         }
         transition={{
           type: "spring",
