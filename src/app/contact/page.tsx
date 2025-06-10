@@ -6,7 +6,7 @@ import { getResponsivePadding, getSectionClasses } from '../../utils/layoutUtils
 import { sendEmail } from '../../services/emailService';
 
 export default function Contact() {
-  const { isCollapsed } = useNavigation();
+  const { isCollapsed, isMobile } = useNavigation();
   const [name, setName] = useState('');
   const [subject, setSubject] = useState('');
   const [message, setMessage] = useState('');
@@ -55,25 +55,47 @@ export default function Contact() {
       <div>
         {/* Header */}
         <header 
-          className="flex justify-between header-align pr-12 pl-6 py-8"
-          style={getResponsivePadding(isCollapsed)}
+          className={`flex ${isMobile ? 'justify-start' : 'justify-between'} header-align pr-12 pl-6 py-8`}
+          style={{
+            ...getResponsivePadding(isCollapsed),
+            ...(isMobile && {
+              paddingLeft: '2rem', // 본문 마진과 동일하게 조정
+              paddingRight: '2rem', // 우측도 동일하게 조정
+              position: 'fixed' as const,
+              top: 0,
+              left: 0,
+              right: 0,
+              backgroundColor: '#000000',
+              zIndex: 998, // 네비게이션보다 낮지만 본문보다 높게
+            })
+          }}
         >
           <div className="header-left">
             <h1 className="font-normal">eeezeen</h1>
             <h2 className="text-gray-500 italic" style={{ marginTop: '-5px' }}>Jinwon Lee</h2>
           </div>
-          <nav className="flex space-x-12">
-            <a href="#" className="nav-link">Instagram</a>
-            <a href="#" className="nav-link">Twitter</a>
-            <a href="#" className="nav-link">LinkedIn</a>
-            <a href="#" className="nav-link">Youtube</a>
-          </nav>
+          {/* 모바일에서는 소셜 링크 숨기기 */}
+          {!isMobile && (
+            <nav className="flex space-x-12">
+              <a href="#" className="nav-link">Instagram</a>
+              <a href="#" className="nav-link">Twitter</a>
+              <a href="#" className="nav-link">LinkedIn</a>
+              <a href="#" className="nav-link">Youtube</a>
+            </nav>
+          )}
         </header>
 
         {/* Email Contact Form Section */}
         <section 
           className={getSectionClasses('mb-16')}
-          style={getResponsivePadding(isCollapsed)}
+          style={{
+            ...getResponsivePadding(isCollapsed),
+            ...(isMobile && {
+              paddingTop: '8rem', // 고정된 헤더 높이만큼 상단 패딩 추가
+              paddingLeft: '2rem', // 모바일에서 좌측 마진 줄임
+              paddingRight: '2rem', // 모바일에서 우측 마진도 조정
+            })
+          }}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-pink">Send Mail</span>&gt;</h3>
           
@@ -200,7 +222,13 @@ export default function Contact() {
         {/* Contact Information Section */}
         <section 
           className={getSectionClasses('mb-16')}
-          style={getResponsivePadding(isCollapsed)}
+          style={{
+            ...getResponsivePadding(isCollapsed),
+            ...(isMobile && {
+              paddingLeft: '2rem', // 모바일에서 좌측 마진 줄임
+              paddingRight: '2rem', // 모바일에서 우측 마진도 조정
+            })
+          }}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-blue">Contact</span>&gt;</h3>
           
@@ -219,7 +247,13 @@ export default function Contact() {
         {/* Collaboration Areas Section */}
         <section 
           className={getSectionClasses('mb-16')}
-          style={getResponsivePadding(isCollapsed)}
+          style={{
+            ...getResponsivePadding(isCollapsed),
+            ...(isMobile && {
+              paddingLeft: '2rem', // 모바일에서 좌측 마진 줄임
+              paddingRight: '2rem', // 모바일에서 우측 마진도 조정
+            })
+          }}
         >
           <h3 className="font-normal mb-12">&lt;<span className="text-purple">Areas</span>&gt;</h3>
           

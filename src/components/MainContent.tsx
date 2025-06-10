@@ -7,15 +7,16 @@ interface MainContentProps {
 }
 
 export default function MainContent({ children }: MainContentProps) {
-  const { isCollapsed } = useNavigation();
+  const { isCollapsed, isMobile } = useNavigation();
 
   return (
     <div 
-      className="flex-1 overflow-auto"
+      className="main-content"
       style={{
-        marginLeft: isCollapsed ? 0 : 260,
-        height: '100vh',
-        transition: 'margin-left 0.3s ease'
+        // JavaScript로만 세밀한 조정 (CSS가 기본값 처리)
+        ...(typeof window !== 'undefined' && !isMobile && {
+          marginLeft: isCollapsed ? 0 : 260,
+        })
       }}
     >
       {children}

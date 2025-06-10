@@ -1,4 +1,5 @@
 import { getSectionClasses, getResponsivePadding } from '../../utils/layoutUtils';
+import { useNavigation } from '../LeftNavigation';
 import { type GridViewType } from '../../hooks/useGridView';
 import { type ProjectMainData } from '../../data';
 import FilterControls from './FilterControls';
@@ -33,10 +34,21 @@ export default function WorksSection({
   onViewChange,
   onVideoHover
 }: WorksSectionProps) {
+  const { isMobile } = useNavigation();
+  
+  // 반응형 스타일 적용
+  const sectionStyle = {
+    ...getResponsivePadding(isCollapsed),
+    ...(isMobile && {
+      paddingLeft: '2rem', // 모바일에서 좌측 마진 줄임
+      paddingRight: '2rem', // 모바일에서 우측 마진도 조정
+    })
+  };
+
   return (
     <section 
       className={getSectionClasses()}
-      style={getResponsivePadding(isCollapsed)}
+      style={sectionStyle}
     >
       <h3 className="font-normal mb-12">&lt;<span className="text-blue">Works</span>&gt;</h3>
       

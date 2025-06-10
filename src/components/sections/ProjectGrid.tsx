@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useNavigation } from '../LeftNavigation';
 import { type ProjectMainData } from '../../data';
 
 interface ProjectGridProps {
@@ -21,9 +23,38 @@ export default function ProjectGrid({
   filter,
   onVideoHover
 }: ProjectGridProps) {
+  const { isMobile } = useNavigation();
+  const [responsiveGridClass, setResponsiveGridClass] = useState('grid-cols-3');
+  
+  // 모바일/태블릿에서만 반응형 그리드 클래스 결정
+  useEffect(() => {
+    if (isMobile) {
+      const updateGridClass = () => {
+        if (typeof window !== 'undefined') {
+          const width = window.innerWidth;
+          if (width <= 768) {
+            setResponsiveGridClass('grid-cols-1'); // 모바일: 1단
+          } else if (width <= 1024) {
+            setResponsiveGridClass('grid-cols-2'); // 태블릿: 2단
+          }
+        }
+      };
+
+      updateGridClass();
+      window.addEventListener('resize', updateGridClass);
+      
+      return () => {
+        window.removeEventListener('resize', updateGridClass);
+      };
+    }
+  }, [isMobile]);
+
+  // PC에서는 props의 gridClass 사용, 모바일에서는 반응형 클래스 사용
+  const finalGridClass = isMobile ? responsiveGridClass : gridClass;
+
   return (
     <div 
-      className={`grid ${gridClass} gap-8`}
+      className={`grid ${finalGridClass} gap-8`}
       key={`${view}-${filter}`}
     >
       {(projects || []).map((project: ProjectMainData) => (

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getProjectImagePath } from '../utils/pathUtils';
 import { fetchMultipleYouTubeInfo } from '../services/youtubeService';
+import { useNavigation } from './LeftNavigation';
 import type { MediaItem, ReviewItem, LinkItem } from '../data/types/project';
 
 interface YouTubeVideoInfo {
@@ -46,6 +47,7 @@ export default function ProjectLayout({
   tools,
   icon = '📋'
 }: ProjectLayoutProps) {
+  const { isMobile } = useNavigation();
   const [youtubeVideos, setYoutubeVideos] = useState<YouTubeVideoInfo[]>([]);
   const [isLoadingVideos, setIsLoadingVideos] = useState(false);
 
@@ -72,7 +74,9 @@ export default function ProjectLayout({
   return (
     <div className="project-page">
       {/* Navigation Header */}
-      <div className="project-navigation">
+      <div 
+        className="project-navigation"
+      >
         <Link href="/" style={{ marginRight: '10px', textDecoration: 'underline' }}>
           works
         </Link>
@@ -95,7 +99,14 @@ export default function ProjectLayout({
 
       {/* Wide Media at Top (media3) */}
       {media3 && media3.length > 0 && (
-        <div className="project-media-wide">
+        <div 
+          className="project-media-wide"
+          style={{
+            ...(isMobile && {
+              marginTop: '0rem', // 고정된 헤더 높이만큼 상단 마진 증가
+            })
+          }}
+        >
           {media3.map((mediaItem, index) => (
             <div key={`${projectName}-media3-${index}`}>
               {mediaItem.type === 'video' ? (
@@ -123,7 +134,14 @@ export default function ProjectLayout({
 
       {/* Project Media Grid */}
       {media && media.length > 0 && (
-        <div className={`project-media-grid project-media-grid-${media.length}`}>
+        <div 
+          className={`project-media-grid project-media-grid-${media.length}`}
+          style={{
+            ...(isMobile && !media3 && {
+              marginTop: '0rem', // media3가 없을 때 상단 마진 증가
+            })
+          }}
+        >
           {media.map((mediaItem, index) => (
             <div 
               key={`${projectName}-media-${index}`} 
@@ -153,7 +171,14 @@ export default function ProjectLayout({
       )}
 
       {/* Project Info */}
-      <div className="mb-8">
+      <div 
+        className="mb-8"
+        style={
+          isMobile && !media3 && !media ? {
+            marginTop: '5rem', // media3와 media가 모두 없을 때 상단 마진 증가
+          } : {}
+        }
+      >
         <h1 className="project-title">
           {projectName.toUpperCase()} ({year})
         </h1>

@@ -10,6 +10,7 @@ import { getNavigationImagePath } from '../utils/pathUtils';
 // 네비게이션 컨텍스트 생성
 interface NavigationContextType {
   isCollapsed: boolean;
+  isMobile: boolean;
   toggleNavigation: () => void;
 }
 
@@ -25,13 +26,51 @@ export const useNavigation = () => {
 
 export const NavigationProvider = ({ children }: { children: React.ReactNode }) => {
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isInitialized, setIsInitialized] = useState(false);
+
+  // 화면 크기 변화 감지 및 태블릿 크기 이하에서 네비게이션 자동 접기
+  useEffect(() => {
+    const checkScreenSize = () => {
+      const isTabletOrBelow = window.innerWidth <= 1024; // 태블릿 이하 크기
+      const prevIsMobile = isMobile;
+      
+      setIsMobile(isTabletOrBelow);
+      
+      // 초기화 시에는 즉시 적절한 상태로 설정
+      if (!isInitialized) {
+        setIsCollapsed(isTabletOrBelow);
+        setIsInitialized(true);
+        return;
+      }
+      
+      // 태블릿 이하로 전환될 때만 자동으로 접기
+      if (isTabletOrBelow && !prevIsMobile) {
+        setIsCollapsed(true);
+      }
+      // 데스크톱으로 전환될 때 네비게이션 펼치기
+      else if (!isTabletOrBelow && prevIsMobile) {
+        setIsCollapsed(false);
+      }
+    };
+
+    // 초기 크기 체크
+    checkScreenSize();
+
+    // 리사이즈 이벤트 리스너 추가
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, [isMobile, isInitialized]);
 
   const toggleNavigation = () => {
     setIsCollapsed(!isCollapsed);
   };
 
   return (
-    <NavigationContext.Provider value={{ isCollapsed, toggleNavigation }}>
+    <NavigationContext.Provider value={{ isCollapsed, isMobile, toggleNavigation }}>
       {children}
     </NavigationContext.Provider>
   );
@@ -75,7 +114,16 @@ const menuItems: MenuItem[] = [
 
 // 토글 버튼 컴포넌트
 export const NavigationToggleButton = () => {
-  const { isCollapsed, toggleNavigation } = useNavigation();
+  const { isCollapsed, isMobile, toggleNavigation } = useNavigation();
+
+  // 모바일/태블릿에서는 close.png, PC에서는 기존 collaps.png 사용
+  const getToggleIcon = () => {
+    if (isCollapsed) {
+      return "project/icons/expand.png";
+    } else {
+      return isMobile ? "project/icons/close.png" : "project/icons/collaps.png";
+    }
+  };
 
   return (
     <motion.button
@@ -85,7 +133,7 @@ export const NavigationToggleButton = () => {
       whileTap={{ scale: 0.95 }}
     >
       <Image 
-        src={getNavigationImagePath(isCollapsed ? "project/icons/expand.png" : "project/icons/collaps.png")} 
+        src={getNavigationImagePath(getToggleIcon())} 
         alt={isCollapsed ? "메뉴 열기" : "메뉴 접기"} 
         width={12}
         height={12}
@@ -96,7 +144,7 @@ export const NavigationToggleButton = () => {
 };
 
 export default function LeftNavigation() {
-  const { isCollapsed, toggleNavigation } = useNavigation();
+  const { isCollapsed, isMobile, toggleNavigation } = useNavigation();
   const router = useRouter();
   const pathname = usePathname();
   
@@ -173,6 +221,10 @@ export default function LeftNavigation() {
   const handleMenuClick = (item: MenuItem) => {
     if (item.url) {
       router.push(item.url);
+      // 모바일/태블릿에서 메뉴 클릭 시 네비게이션 닫기
+      if (isMobile) {
+        toggleNavigation();
+      }
     }
   };
 
@@ -244,6 +296,17 @@ export default function LeftNavigation() {
 
   return (
     <>
+      {/* 모바일/태블릿에서 네비게이션이 열렸을 때 배경 오버레이 */}
+      {isMobile && !isCollapsed && (
+        <motion.div
+          className="mobile-nav-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={toggleNavigation}
+        />
+      )}
+
       {/* 접혔을 때 열기 버튼 */}
       {isCollapsed && (
         <motion.button
@@ -251,9 +314,15 @@ export default function LeftNavigation() {
           className="navigation-toggle-btn-collapsed"
           whileHover={{ scale: 1.0 }}
           whileTap={{ scale: 1.0 }}
-          initial={{ opacity: 0, x: -100 }}
+          initial={{ 
+            opacity: 0, 
+            x: isMobile ? 100 : -100  // 태블릿/모바일에서는 오른쪽에서, PC에서는 왼쪽에서
+          }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -10 }}
+          exit={{ 
+            opacity: 0, 
+            x: isMobile ? 10 : -10  // 태블릿/모바일에서는 오른쪽으로, PC에서는 왼쪽으로
+          }}
           transition={{
             type: 'keyframes',
             stiffness: 100,
@@ -273,9 +342,28 @@ export default function LeftNavigation() {
       
       <motion.div 
         className="left-nav-container"
-        animate={{
-          x: isCollapsed ? -260 : 0,
-        }}
+        animate={
+          isMobile 
+            ? { 
+                scale: isCollapsed ? 0 : 1,
+                opacity: isCollapsed ? 0 : 1,
+                x: "-50%",
+                y: "-50%"
+              }
+            : { 
+                x: isCollapsed ? -260 : 0 
+              }
+        }
+        initial={
+          isMobile 
+            ? { 
+                scale: 0, 
+                opacity: 0,
+                x: "-50%",
+                y: "-50%"
+              }
+            : { x: 0 }
+        }
         transition={{
           type: "spring",
           stiffness: 300,

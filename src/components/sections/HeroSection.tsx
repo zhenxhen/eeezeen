@@ -1,4 +1,5 @@
 import { getResponsivePadding } from '../../utils/layoutUtils';
+import { useNavigation } from '../LeftNavigation';
 
 interface HeroSectionProps {
   isCollapsed: boolean;
@@ -9,10 +10,21 @@ interface HeroSectionProps {
  * 브랜드 메시지와 소개글을 표시합니다.
  */
 export default function HeroSection({ isCollapsed }: HeroSectionProps) {
+  const { isMobile } = useNavigation();
+  
+  const heroStyle = {
+    ...getResponsivePadding(isCollapsed),
+    ...(isMobile && {
+      paddingTop: '8rem', // 고정된 헤더 높이만큼 상단 패딩 추가
+      paddingLeft: '2rem', // 모바일에서 좌측 마진 줄임
+      paddingRight: '2rem', // 모바일에서 우측 마진도 조정
+    })
+  };
+
   return (
     <section 
       className="pr-12 pl-6 py-16"
-      style={getResponsivePadding(isCollapsed)}
+      style={heroStyle}
     >
       <h2 className="font-normal mb-16 text-pink">&quot;Humanizing Technology&quot;</h2>
       <div className="max-w-xl">

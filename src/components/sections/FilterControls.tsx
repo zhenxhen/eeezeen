@@ -1,4 +1,5 @@
 import { type GridViewType } from '../../hooks/useGridView';
+import { useNavigation } from '../LeftNavigation';
 
 interface FilterControlsProps {
   filters: string[];
@@ -10,8 +11,8 @@ interface FilterControlsProps {
 }
 
 /**
- * 필터 및 뷰 선택 컨트롤 컴포넌트
- * 프로젝트 필터링과 그리드 뷰 옵션을 제공합니다.
+ * 필터 선택 컨트롤 컴포넌트
+ * 프로젝트 필터링 옵션을 제공합니다.
  */
 export default function FilterControls({
   filters,
@@ -21,6 +22,8 @@ export default function FilterControls({
   onFilterChange,
   onViewChange
 }: FilterControlsProps) {
+  const { isMobile } = useNavigation();
+
   return (
     <div className="filter-view-container">
       {/* Filter Line */}
@@ -41,23 +44,25 @@ export default function FilterControls({
         </div>
       </div>
       
-      {/* View Line */}
-      <div className="flex items-start">
-        <span className="text-blue mr-2 filter-label">view :</span>
-        <div>
-          {views.map((viewItem, index) => (
-            <span key={viewItem}>
-              <span
-                onClick={() => onViewChange(viewItem as GridViewType)}
-                className={`cursor-pointer filter-item ${view === viewItem ? 'active' : ''}`}
-              >
-                {viewItem}
+      {/* View Line - PC에서만 표시 */}
+      {!isMobile && (
+        <div className="flex items-start">
+          <span className="text-blue mr-2 filter-label">view :</span>
+          <div>
+            {views.map((viewItem, index) => (
+              <span key={viewItem}>
+                <span
+                  onClick={() => onViewChange(viewItem as GridViewType)}
+                  className={`cursor-pointer filter-item ${view === viewItem ? 'active' : ''}`}
+                >
+                  {viewItem}
+                </span>
+                {index < views.length - 1 && <span className="filter-comma">,</span>}
               </span>
-              {index < views.length - 1 && <span className="filter-comma">,</span>}
-            </span>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 } 
