@@ -38,7 +38,7 @@ The design process focused on creating an intuitive interface that combines educ
     tools: [
       'Figma',
       'Sketch',
-      'Principle',
+      'Blender',
       'After Effects',
       'User Research',
       'Prototyping'

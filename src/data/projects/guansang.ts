@@ -36,9 +36,11 @@ The interface provides real-time facial analysis and generates interpretative re
       { type: 'image', src: 'project/guansang5.png' }
     ],
     tools: [
+      'OpenAI API',
+      'Google AI',
       'Machine Learning',
-      'Computer Vision',
       'React',
+      'Typescript',
       'Python',
       'TensorFlow'
     ]

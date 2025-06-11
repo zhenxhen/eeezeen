@@ -43,11 +43,13 @@ The design process emphasized universal design principles, ensuring that the tec
     tools: [
       'Figma',
       'Sketch',
-      'Principle',
-      'After Effects',
-      'AI/ML Research',
+      'Rhino',
+      'KeyShot',
+      'Figma',
+      'Sketch',
       'User Research',
-      'Accessibility Testing',
+      'Prototyping',
+      'Product Development',
       'Prototyping'
     ]
   }

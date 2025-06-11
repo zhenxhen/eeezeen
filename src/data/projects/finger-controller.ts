@@ -31,10 +31,10 @@ The technology has applications in virtual reality, augmented reality, smart hom
       { type: 'video', src: 'project/finger.mp4' }
     ],
     tools: [
-      'OpenCV',
+      'OpenAI API',
+      'Google AI',
       'MediaPipe',
       'Python',
-      'Computer Vision',
       'Machine Learning'
     ]
   }

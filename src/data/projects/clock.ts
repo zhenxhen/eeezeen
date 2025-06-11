@@ -46,13 +46,10 @@ The design process focused on creating a unified experience that works seamlessl
       }
     ],
     tools: [
-      'Figma',
       'Sketch',
-      'Principle',
-      'After Effects',
+      'BigData Research',
       'Samsung One UI Design System',
-      'Android Studio',
-      'Tizen Studio'
+      'Android Studio'
     ]
   }
 }; 

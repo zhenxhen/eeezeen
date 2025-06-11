@@ -361,21 +361,51 @@ a:hover {
 
 
 
+/* 스크롤바 숨기기 */
 ::-webkit-scrollbar {
-  width: 8px;
+  display: none;
 }
 
-::-webkit-scrollbar-track {
-  background: #000000;
+/* Firefox에서 스크롤바 숨기기 */
+* {
+  scrollbar-width: none;
 }
 
-::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 4px;
+/* IE/Edge에서 스크롤바 숨기기 */
+* {
+  -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+/* 콘텐츠 보호 - 선택, 드래그, 저장 방지 */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 이미지 및 영상 보호 */
+img, video {
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -khtml-user-select: none;
+  -o-user-select: none;
+}
+
+/* 텍스트는 선택 가능하도록 복원 */
+p, h1, h2, h3, h4, h5, h6, span, a, button, div {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 /* LeftNavigation Styles */

@@ -39,8 +39,9 @@ The design approach focused on creating an intuitive interface that prioritizes 
     tools: [
       'Figma',
       'Sketch',
+      'Rhino',
+      'KeyShot',
       'User Research',
-      'Accessibility Testing',
       'Prototyping',
       'Service Design'
     ]

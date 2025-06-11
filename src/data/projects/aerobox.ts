@@ -41,14 +41,13 @@ The design process focused on creating a solution that balances functionality wi
       text: '>> View in Behance'
     },
     tools: [
-      'SolidWorks',
+      'Rhino',
       'KeyShot',
       'Figma',
       'Sketch',
-      'Industrial Design',
       'User Research',
       'Prototyping',
-      'Product Development'
+      'Product Development',
     ]
   }
 }; 
