@@ -616,8 +616,8 @@ a:hover {
     background: rgba(0, 0, 0, 0.4); /* 50%에서 시작하도록 더 연하게 */
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    mask: linear-gradient(to bottom, black 0%, black 30%, rgba(0,0,0,0.5) 60%, transparent 100%);
-    -webkit-mask: linear-gradient(to bottom, black 0%, black 20%, rgba(0,0,0,0.1) 90%, transparent 100%);
+    mask: linear-gradient(to bottom, black 0%, black 10%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    -webkit-mask: linear-gradient(to bottom, black 10%, black 30%, rgba(0,0,0,0.1) 90%, transparent 100%);
     pointer-events: none;
     z-index: -1;
   }
@@ -630,6 +630,46 @@ a:hover {
   /* 프로젝트 페이지에서 네비게이션 헤더 아래 콘텐츠 간격 */
   .project-page {
     padding-top: 0rem; /* 고정된 헤더 높이만큼 여백 */
+  }
+  
+  /* 태블릿 이하에서 펼치기 버튼 스타일 제거 */
+  .navigation-toggle-btn-inside {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+  }
+  
+  .navigation-toggle-btn-inside:hover {
+    background-color: transparent !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  .navigation-toggle-btn-collapsed {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+  
+  .navigation-toggle-btn-collapsed:hover {
+    background-color: transparent !important;
+    transform: none !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+  }
+
+
+  .review-creator {
+    font-size: 10px;
+  }
+  /* 태블릿 이하에서 Review 썸네일 크기 축소 */
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 3fr)) !important;
+  }
+  
+  .review-card {
+    max-width: 200px !important;
   }
 }
 
@@ -866,8 +906,8 @@ a:hover {
 }
 
 .review-title {
-  color: #ffffff;
-  font-size: 14px;
+  color: #ffffffcb;
+  font-size: 12px;
   font-weight: normal;
   line-height: 1.4;
   margin-bottom: 0.5rem;
@@ -878,7 +918,7 @@ a:hover {
 }
 
 .review-creator {
-  color: #9ca3af;
+  color: #9ca3af71;
   font-size: 12px;
   font-weight: normal;
 }

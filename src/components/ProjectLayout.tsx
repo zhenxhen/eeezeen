@@ -84,6 +84,9 @@ export default function ProjectLayout({
             right: 0,
             zIndex: 997,
             padding: '1.5rem 2rem 1rem 2rem',
+            display: 'flex',
+            alignItems: 'center',
+            minHeight: '75px',
           } : {}
         }
       >
@@ -91,7 +94,7 @@ export default function ProjectLayout({
           works
         </Link>
         <span className="text-white mr-4">&gt;</span>
-        <span className="text-white inline-flex items-start" style={{ gap: '10px',}}>
+        <span className="text-white inline-flex items-center" style={{ gap: '10px',}}>
           {icon && typeof icon === 'string' && icon.includes('/') ? (
             <Image
               src={getProjectImagePath(icon)}
