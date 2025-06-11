@@ -624,12 +624,12 @@ a:hover {
   
   /* 헤더가 고정될 때 본문 콘텐츠 여백 조정 */
   .main-content {
-    padding-top: 0rem;
+    padding-top: 2rem;
   }
   
   /* 프로젝트 페이지에서 네비게이션 헤더 아래 콘텐츠 간격 */
   .project-page {
-    padding-top: 0rem; /* 고정된 헤더 높이만큼 여백 */
+    padding-top: 2rem; /* 고정된 헤더 높이만큼 여백 */
   }
   
   /* 태블릿 이하에서 펼치기 버튼 스타일 제거 */
