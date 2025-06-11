@@ -22,14 +22,13 @@ export default function Header({ isCollapsed }: HeaderProps) {
       top: 0,
       left: 0,
       right: 0,
-      backgroundColor: '#000000',
       zIndex: 998, // 네비게이션보다 낮지만 본문보다 높게
     })
   };
 
   return (
     <header 
-      className={`flex ${isMobile ? 'justify-start' : 'justify-between'} header-align pr-12 pl-6 py-8`}
+      className={`flex ${isMobile ? 'justify-start' : 'justify-between'} header-align pr-12 pl-6 py-8 ${isMobile ? 'mobile-header-blur' : ''}`}
       style={headerStyle}
     >
       <div className="header-left">

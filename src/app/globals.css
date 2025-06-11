@@ -585,20 +585,51 @@ a:hover {
 
 .project-navigation {
   font-size: 14px;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 /* 태블릿 이하에서 프로젝트 네비게이션 고정 헤더 */
-@media (max-width: 1024px) {
+@media (max-width: 1024px) {  
   .project-navigation {
-    position: fixed;
+    position: fixed !important;
     top: 0;
     left: 0;
     right: 0;
-    background-color: #000000;
     z-index: 997;
     padding: 1.5rem 2rem 1rem 2rem;
     margin-bottom: 0;
+    background: transparent; /* 기본 배경은 투명하게 */
+  }
+  
+  /* 모바일 헤더 블러 배경 효과 */
+  .mobile-header-blur {
+    position: relative;
+  }
+  
+  .mobile-header-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -50%; /* 헤더 백그라운드 영역을 1.5배로 확장 */
+    background: rgba(0, 0, 0, 0.4); /* 50%에서 시작하도록 더 연하게 */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    mask: linear-gradient(to bottom, black 0%, black 30%, rgba(0,0,0,0.5) 60%, transparent 100%);
+    -webkit-mask: linear-gradient(to bottom, black 0%, black 20%, rgba(0,0,0,0.1) 90%, transparent 100%);
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  /* 헤더가 고정될 때 본문 콘텐츠 여백 조정 */
+  .main-content {
+    padding-top: 0rem;
+  }
+  
+  /* 프로젝트 페이지에서 네비게이션 헤더 아래 콘텐츠 간격 */
+  .project-page {
+    padding-top: 0rem; /* 고정된 헤더 높이만큼 여백 */
   }
 }
 
@@ -655,7 +686,7 @@ a:hover {
 .project-title {
   font-size: 20px;
   font-weight: normal;
-  margin-bottom: 0rem;
+  margin-bottom: 1rem;
   margin-right: 3rem;
   color: #ffffff;
 }

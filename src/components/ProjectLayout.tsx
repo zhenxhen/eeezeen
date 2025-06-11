@@ -75,7 +75,17 @@ export default function ProjectLayout({
     <div className="project-page">
       {/* Navigation Header */}
       <div 
-        className="project-navigation"
+        className={`project-navigation ${isMobile ? 'mobile-header-blur' : ''}`}
+        style={
+          isMobile ? {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            zIndex: 997,
+            padding: '1.5rem 2rem 1rem 2rem',
+          } : {}
+        }
       >
         <Link href="/" style={{ marginRight: '10px', textDecoration: 'underline' }}>
           works
