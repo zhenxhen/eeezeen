@@ -39,8 +39,7 @@ export default function HeroSection({ isCollapsed }: HeroSectionProps) {
             @eeezeen
           </a>
           ), An AI Design engineer Technology follows where life leads.<br />
-          Envisioning a future where computers reflect the essence of humanity.<br />
-          Based in Seoul and London.
+          Envisioning a future where computers reflect the essence of humanity.
         </p>
       </div>
     </section>

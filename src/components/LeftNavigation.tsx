@@ -119,13 +119,18 @@ const menuItems: MenuItem[] = [
 // 토글 버튼 컴포넌트
 export const NavigationToggleButton = () => {
   const { isCollapsed, isMobile, toggleNavigation } = useNavigation();
+  const { isDark } = useTheme();
 
   // 모바일/태블릿에서는 close.png, PC에서는 기존 collaps.png 사용
   const getToggleIcon = () => {
     if (isCollapsed) {
-      return "project/icons/expand.png";
+      return isDark ? "project/icons/expand.png" : "project/icons/expand_light.png";
     } else {
-      return isMobile ? "project/icons/close.png" : "project/icons/collaps.png";
+      if (isMobile) {
+        return isDark ? "project/icons/close.png" : "project/icons/close_light.png";
+      } else {
+        return isDark ? "project/icons/collaps.png" : "project/icons/collaps_light.png";
+      }
     }
   };
 
@@ -355,7 +360,7 @@ export default function LeftNavigation() {
           }}
         >
           <Image 
-            src={getNavigationImagePath("project/icons/expand.png")} 
+            src={getNavigationImagePath(isDark ? "project/icons/expand.png" : "project/icons/expand_light.png")} 
             alt="메뉴 열기" 
             width={16}
             height={16}
