@@ -149,7 +149,7 @@ export const NavigationToggleButton = () => {
 
 export default function LeftNavigation() {
   const { isCollapsed, isMobile, toggleNavigation } = useNavigation();
-  const { theme, toggleTheme, isDark } = useTheme();
+  const { toggleTheme, isDark } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
   const [isAnimating, setIsAnimating] = useState(false);
