@@ -16,10 +16,13 @@ body {
   line-height: 1.6;
   font-size: 14px;
   margin: 0px;
+  transition: background-color 1s ease;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
+  transition: background-color 1s ease;
 }
 
 /* P tag with left border styling */
@@ -408,6 +411,328 @@ p, h1, h2, h3, h4, h5, h6, span, a, button, div {
   user-select: text;
 }
 
+/* Theme Switch Styles */
+.theme-switch-container {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+}
+
+/* 태블릿 이하에서 테마 스위치를 메뉴 리스트의 일부로 처리 */
+@media (max-width: 1024px) {
+  .theme-switch-container {
+    position: static;
+    transform: none;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+}
+
+.theme-switch-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-switch {
+  width: 200px;
+  height: 40px;
+  background: rgb(37, 37, 37);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 16px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.theme-switch:hover {
+  background: rgb(80, 80, 80);
+  transform: translateY(-1px);
+}
+
+.theme-switch:active {
+  transform: translateY(0);
+}
+
+.theme-switch.theme-light {
+  background: #cccccc;
+}
+
+.theme-switch-thumb.theme-light {
+  transform: translateX(52px);
+  background: #989898;
+}
+
+.theme-switch-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.theme-switch-icon img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.theme-switch-content {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.theme-switch-inner {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.2s ease;
+  width: 100%;
+}
+
+.theme-switch-inner.slide-out-down {
+  transform: translateY(40px);
+  opacity: 0;
+}
+
+.theme-switch-inner.slide-in-up {
+  transform: translateY(-40px);
+  opacity: 0;
+}
+
+.theme-switch-inner.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 라이트 모드 아이콘 회전 애니메이션 */
+.theme-light .theme-switch-inner.slide-out-down .theme-switch-icon {
+  transform: rotate(50000deg);
+  transition: transform 10s ease;
+}
+
+.theme-light .theme-switch-inner.slide-in-up .theme-switch-icon {
+  transform: rotate(50000deg);
+  transition: transform 10s ease;
+}
+
+.theme-light .theme-switch-inner.visible .theme-switch-icon {
+  transform: rotate(0deg);
+  transition: transform 1s ease;
+  transition-delay: 0.3s;
+}
+
+.theme-switch-text {
+  margin-left: 10px;
+  font-size: 12px;
+  font-family: "source-code-pro", monospace;
+  color: #808080;
+  white-space: nowrap;
+  font-weight: normal;
+}
+
+.theme-light .theme-switch-text {
+  color: #6d6d6d !important;
+  font-size: 11px;
+}
+
+
+
+/* Light Theme Styles */
+.theme-light {
+  transition: all 0.3s ease;
+}
+
+.theme-light body {
+  background-color: #ffffff !important;
+  color: #2f2f2f !important;
+}
+
+.theme-light .bg-black {
+  background-color: #ffffff !important;
+}
+
+.theme-light .text-white {
+  color: #2f2f2f !important;
+}
+
+.theme-light .text-gray-500 {
+  color: #666666 !important;
+}
+
+.theme-light .left-nav-container {
+  background-color: #f5f5f5 !important;
+}
+
+.theme-light .left-nav-header h1 {
+  color: #2f2f2f !important;
+}
+
+.theme-light .left-nav-menu-item {
+  color: #666 !important;
+}
+
+.theme-light .left-nav-menu-item.active {
+  background-color: #e0e0e0 !important;
+  color: #2f2f2f !important;
+}
+
+.theme-light .left-nav-menu-item:hover {
+  background-color: #eeeeee !important;
+}
+
+.theme-light .left-nav-submenu {
+  border-left-color: #ddd !important;
+}
+
+
+
+.theme-light p {
+  border-left-color: #ddd !important;
+}
+
+.theme-light .filter-view-container {
+  border-left-color: #ddd !important;
+}
+
+.theme-light .project-description {
+  color: #555 !important;
+  border-left-color: #ddd !important;
+}
+
+.theme-light .project-tools-list {
+  color: #666 !important;
+  border-left-color: #ddd !important;
+}
+
+.theme-light .reviews-grid {
+  border-left-color: #ddd !important;
+}
+
+/* 라이트 모드 - 추가 스타일 */
+.theme-light html {
+  background-color: #ffffff !important;
+}
+
+.theme-light body {
+  background-color: #ffffff !important;
+}
+
+.theme-light * {
+  box-sizing: border-box;
+}
+
+.theme-light {
+  background-color: #ffffff !important;
+}
+
+.theme-light:root {
+  background-color: #ffffff !important;
+}
+
+.theme-light::before,
+.theme-light::after {
+  background-color: #ffffff !important;
+}
+
+.theme-light .mobile-header-blur::before {
+  background: rgba(255, 255, 255, 0.4) !important;
+}
+
+.theme-light .project-title {
+  color: #2f2f2f !important;
+}
+
+.theme-light .project-subtitle {
+  color: #666 !important;
+}
+
+.theme-light .project-reviews h3 {
+  color: #2f2f2f !important;
+}
+
+.theme-light .review-title {
+  color: #2f2f2f !important;
+}
+
+.theme-light h1, 
+.theme-light h2, 
+.theme-light h3, 
+.theme-light h4, 
+.theme-light h5, 
+.theme-light h6 {
+  color: #2f2f2f !important;
+}
+
+.theme-light span {
+  color: #2f2f2f !important;
+}
+
+/* 라이트 모드 - 모든 왼쪽 테두리선 */
+.theme-light [style*="border-left"] {
+  border-left-color: #ddd !important;
+}
+
+.theme-light .pl-6[style*="borderLeft"] {
+  border-left-color: #ddd !important;
+}
+
+.theme-light section > div[style*="borderLeft"] {
+  border-left-color: #ddd !important;
+}
+
+.theme-light div[style*="borderLeft: '1px solid #4b5563'"] {
+  border-left-color: #ddd !important;
+}
+
+.theme-light .space-y-6[style*="borderLeft"] {
+  border-left-color: #ddd !important;
+}
+
+/* 모든 인라인 스타일 테두리 override */
+.theme-light * {
+  border-left-color: #ddd !important;
+}
+
+.theme-light *[style*="borderLeft: '1px solid"] {
+  border-left-color: #ddd !important;
+}
+
+.theme-light *[style*="border-left: 1px solid"] {
+  border-left-color: #ddd !important;
+}
+
+/* 라이트 모드 - 컬러 텍스트 변경 */
+.theme-light .text-pink {
+  color: #BE3DB2 !important;
+}
+
+.theme-light .text-blue {
+  color: #3871AA !important;
+}
+
+.theme-light .text-yellow {
+  color: #D9931F !important;
+}
+
+.theme-light .text-purple {
+  color: #6657BE !important;
+}
+
 /* LeftNavigation Styles */
 .left-nav-container {
   position: fixed;
@@ -454,7 +779,14 @@ p, h1, h2, h3, h4, h5, h6, span, a, button, div {
 .left-nav-menu {
   flex: 1;
   overflow-y: auto;
-  padding: 0rem 0 3rem 0; /* 아래쪽에 50px(3rem) 패딩 추가 */
+  padding: 0rem 0 150px 0; /* 아래쪽에 50px(3rem) 패딩 추가 */
+}
+
+/* 태블릿 이하에서는 메뉴 패딩 조정 */
+@media (max-width: 1024px) {
+  .left-nav-menu {
+    padding: 0rem 0 1rem 0; /* 태블릿에서는 일반적인 패딩만 */
+  }
 }
 
 .left-nav-menu-item {

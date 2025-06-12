@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import LeftNavigation, { NavigationProvider } from "../components/LeftNavigation";
+import { ThemeProvider } from "../contexts/ThemeContext";
 import MainContent from "../components/MainContent";
 
 export const metadata: Metadata = {
@@ -87,12 +88,14 @@ export default function RootLayout({
         }} />
       </head>
       <body className="flex h-screen">
-        <NavigationProvider>
-          <LeftNavigation />
-          <MainContent>
-            {children}
-          </MainContent>
-        </NavigationProvider>
+        <ThemeProvider>
+          <NavigationProvider>
+            <LeftNavigation />
+            <MainContent>
+              {children}
+            </MainContent>
+          </NavigationProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

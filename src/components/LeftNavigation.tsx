@@ -6,6 +6,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Image from 'next/image';
 import { projectMenuItems } from '../data';
 import { getNavigationImagePath } from '../utils/pathUtils';
+import { useTheme } from '../contexts/ThemeContext';
 
 // 네비게이션 컨텍스트 생성
 interface NavigationContextType {
@@ -148,8 +149,11 @@ export const NavigationToggleButton = () => {
 
 export default function LeftNavigation() {
   const { isCollapsed, isMobile, toggleNavigation } = useNavigation();
+  const { theme, toggleTheme, isDark } = useTheme();
   const router = useRouter();
   const pathname = usePathname();
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationClass, setAnimationClass] = useState('visible');
   
   // localStorage에서 사용자의 works 접기/펼치기 상태를 불러오기
   const getInitialExpanded = useCallback(() => {
@@ -236,6 +240,23 @@ export default function LeftNavigation() {
     toggleExpand(itemId);
   };
 
+  const handleThemeToggle = () => {
+    if (isAnimating) return;
+    
+    setIsAnimating(true);
+    setAnimationClass('slide-out-down');
+    
+    setTimeout(() => {
+      toggleTheme();
+      setAnimationClass('slide-in-up');
+      
+      setTimeout(() => {
+        setAnimationClass('visible');
+        setIsAnimating(false);
+      }, 50);
+    }, 200);
+  };
+
   const renderMenuItem = (item: MenuItem, depth = 0) => {
     const hasChildren = item.children && item.children.length > 0;
     const isExpanded = expandedItems.has(item.id);
@@ -260,7 +281,7 @@ export default function LeftNavigation() {
               onClick={(e) => handleExpandClick(item.id, e)}
             >
               <Image 
-                src={getNavigationImagePath("project/icons/list_arrow.png")} 
+                src={getNavigationImagePath(isDark ? "project/icons/list_arrow.png" : "project/icons/list_arrow_light.png")} 
                 alt="펼치기/접기" 
                 width={14}
                 height={14}
@@ -391,6 +412,34 @@ export default function LeftNavigation() {
         {/* Navigation Menu */}
         <div className="left-nav-menu">
           {menuItems.map((item) => renderMenuItem(item))}
+          
+          {/* Theme Switch */}
+          <div className="theme-switch-container">
+            <div className="theme-switch-wrapper">
+              <button
+                onClick={handleThemeToggle}
+                className={`theme-switch ${isDark ? 'theme-dark' : 'theme-light'}`}
+                aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+              >
+                <div className="theme-switch-content">
+                  <div className={`theme-switch-inner ${animationClass}`}>
+                    <span className="theme-switch-icon">
+                      <Image 
+                        src={getNavigationImagePath(isDark ? "project/icons/dark.png" : "project/icons/light.png")} 
+                        alt={isDark ? "Dark mode" : "Light mode"}
+                        width={20}
+                        height={20}
+                        className="object-contain"
+                      />
+                    </span>
+                    <span className="theme-switch-text">
+                      {isDark ? "Dark Mode" : "Light Mode"}
+                    </span>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
         </div>
       </motion.div>
     </>
