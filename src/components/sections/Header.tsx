@@ -38,10 +38,9 @@ export default function Header({ isCollapsed }: HeaderProps) {
       {/* 모바일에서는 소셜 링크 숨기기 */}
       {!isMobile && (
         <nav className="flex space-x-12">
-          <a href="#" className="nav-link">Instagram</a>
-          <a href="#" className="nav-link">Twitter</a>
-          <a href="#" className="nav-link">LinkedIn</a>
-          <a href="#" className="nav-link">Youtube</a>
+          <a target="_blank" href="https://www.instagram.com/eeezeen/" className="nav-link">Instagram</a>
+          <a target="_blank" href="https://www.linkedin.com/in/jinwon-eugene-lee/" className="nav-link">LinkedIn</a>
+          <a target="_blank" href="https://www.youtube.com/shorts/XSsLPJ0m0dQ" className="nav-link">Youtube</a>
         </nav>
       )}
     </header>

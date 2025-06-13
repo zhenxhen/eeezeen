@@ -409,7 +409,17 @@ export default function LeftNavigation() {
         {/* Header */}
         <div className="left-nav-header">
           <div className="flex items-start justify-between">
-            <h1 className="text-white font-bold">eeezeen</h1>
+            <h1 
+              className="text-white font-bold cursor-pointer hover:opacity-80 transition-opacity" 
+              onClick={() => {
+                router.push('/');
+                if (isMobile) {
+                  toggleNavigation();
+                }
+              }}
+            >
+              eeezeen
+            </h1>
             <NavigationToggleButton />
           </div>
         </div>
