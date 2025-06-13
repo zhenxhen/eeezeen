@@ -362,8 +362,8 @@ export default function LeftNavigation() {
           <Image 
             src={getNavigationImagePath(isDark ? "project/icons/expand.png" : "project/icons/expand_light.png")} 
             alt="메뉴 열기" 
-            width={16}
-            height={16}
+            width={12}
+            height={12}
             className="object-contain align-middle"
           />
         </motion.button>
