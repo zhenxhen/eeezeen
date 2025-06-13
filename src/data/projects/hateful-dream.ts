@@ -6,7 +6,7 @@ export const hatefulDream: ProjectData = {
     title: 'Hateful Dream',
     thumbnail: 'project/hatefuldream.png', // 임시 썸네일 경로
     image: 'project/hatefuldream.png', // 임시 메인 이미지 경로
-    category: ['AI Film'],
+    category: ['Film'],
     link: '/works/hateful-dream'
   },
   menu: {

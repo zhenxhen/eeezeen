@@ -6,7 +6,7 @@ export const theBubble: ProjectData = {
     title: 'the bubble',
     thumbnail: 'project/thebubble.png', // 임시 썸네일 경로
     image: 'project/thebubble.png', // 임시 메인 이미지 경로
-    category: ['AI Film'],
+    category: ['Film'],
     link: '/works/the-bubble'
   },
   menu: {

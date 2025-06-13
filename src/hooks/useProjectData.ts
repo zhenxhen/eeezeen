@@ -11,7 +11,7 @@ export const useProjectData = () => {
   const projects = useMemo(() => getMainPageProjects() || [], []);
 
   // 필터 옵션들
-  const filters = ['All', 'AI', 'UI', 'Product', 'Researches', 'Movies', 'Labs'];
+  const filters = ['All', 'AI', 'UI', 'Product', 'Film', 'Labs'];
   
   // 뷰 옵션들
   const views = ['3x', '2x'];
