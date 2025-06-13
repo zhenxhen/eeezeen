@@ -49,13 +49,13 @@ export const metadata: Metadata = {
     description: 'Humanizing Technology',
     images: [
       {
-        url: 'https://eeezeen.com/og-image.jpg',
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'eeezeen // Jinwon Lee',
       },
       {
-        url: 'https://eeezeen.com/og-image-square.jpg',
+        url: '/og-image-square.jpg',
         width: 1080,
         height: 1080,
         alt: 'eeezeen // Jinwon Lee',
@@ -67,7 +67,7 @@ export const metadata: Metadata = {
     title: 'eeezeen // Jinwon Lee',
     description: 'Humanizing Technology',
     creator: '@eeezeen',
-    images: ['https://eeezeen.com/og-image.jpg'],
+    images: ['/og-image.jpg'],
   },
   robots: {
     index: true,
