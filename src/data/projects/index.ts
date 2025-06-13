@@ -3,6 +3,8 @@ import { guansang } from './guansang';
 import { review } from './review';
 import { fingerController } from './finger-controller';
 import { hatefulDream } from './hateful-dream';
+import { theBubble } from './the-bubble';
+import { saju } from './saju';
 import { reminder } from './reminder';
 import { clock } from './clock';
 import { garden } from './garden';
@@ -17,6 +19,8 @@ const projectsInOrder = [
   review,
   fingerController,
   hatefulDream,
+  theBubble,
+  saju,
   reminder,
   clock,
   garden,  
@@ -45,14 +49,16 @@ export const allProjects: Record<string, ProjectData> = {
   'review': projectsWithAutoIds[1],
   'finger-controller': projectsWithAutoIds[2],
   'hateful-dream': projectsWithAutoIds[3],
-  'reminder': projectsWithAutoIds[4],
-  'clock': projectsWithAutoIds[5],
-  'garden': projectsWithAutoIds[6],
-  'bloomy': projectsWithAutoIds[7],
-  'view': projectsWithAutoIds[8],
-  'aerobox': projectsWithAutoIds[9],
-  'wheeling': projectsWithAutoIds[10],
+  'the-bubble': projectsWithAutoIds[4],
+  'saju': projectsWithAutoIds[5],
+  'reminder': projectsWithAutoIds[6],
+  'clock': projectsWithAutoIds[7],
+  'garden': projectsWithAutoIds[8],
+  'bloomy': projectsWithAutoIds[9],
+  'view': projectsWithAutoIds[10],
+  'aerobox': projectsWithAutoIds[11],
+  'wheeling': projectsWithAutoIds[12],
 };
 
 // 개별 프로젝트 export (필요시 직접 접근 가능)
-export { guansang, review, fingerController, hatefulDream, reminder, clock, garden, bloomy, view, aerobox, wheeling }; 
+export { guansang, review, fingerController, hatefulDream, theBubble, saju, reminder, clock, garden, bloomy, view, aerobox, wheeling }; 

@@ -21,15 +21,19 @@ export const hatefulDream: ProjectData = {
     subtitle: 'AI Short Film',
     description: `In the dream, I found myself in a forest I could not explain—alien, yet strangely familiar. Towering trees blocked my way, their branches reaching toward the sky. A crimson glow flickered before my eyes. This place did not exist. The harder I struggled to escape, the more disoriented I became, with every path leading to a dead end.\n\nWhen I finally woke up, I could remember nothing, yet the feeling lingered with me throughout the day.`,
     media: [
+        { type: 'image', src: 'project/hatefuldream-main.png' },
     ],
     media3: [
-      { type: 'image', src: 'project/hatefuldream-main.png' },
     ],
     media4: [
         { type: 'image', src: 'project/hatefuldream-1.png' },
         { type: 'image', src: 'project/hatefuldream-2.png' },
         { type: 'image', src: 'project/hatefuldream-3.png' },
       ],
+      link: {
+        url: 'https://youtu.be/Kg4L_AF3dmo?si=iSmrDpJ9N4QhlEHq/',
+        text: '>> SCR'
+      },
     tools: [
       'Runway ML',
       'Midjourney',
