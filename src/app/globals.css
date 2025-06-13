@@ -1309,4 +1309,12 @@ p, h1, h2, h3, h4, h5, h6, span, a, button, div {
   }
 }
 
+.theme-light .link-button {
+  color: #6b7280;
+}
+
+.theme-light .link-button:hover {
+  color: #E394DC;
+}
+
 

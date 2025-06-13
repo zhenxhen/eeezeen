@@ -30,6 +30,10 @@ The interface provides real-time facial analysis and generates interpretative re
       { type: 'video', src: 'project/guansang2.mp4' },
       { type: 'video', src: 'project/guansang1.mp4' }
     ],
+    link: {
+      url: 'https://zhenxhen.github.io/guansang/',
+      text: '>> Try the beta version (Korean supported)'
+    },
     media2: [
       { type: 'image', src: 'project/guansang3.png' },
       { type: 'video', src: 'project/guansang4.mov' },

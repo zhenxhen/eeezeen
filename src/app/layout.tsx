@@ -7,6 +7,64 @@ import MainContent from "../components/MainContent";
 export const metadata: Metadata = {
   title: "eeezeen - Jinwon Lee",
   description: "AI Design Engineer - Humanizing Technology",
+  keywords: ["AI Design", "UX Design", "Interaction Design", "Creative Computing", "Samsung Electronics"],
+  authors: [{ name: "Jinwon Lee", url: "https://eeezeen.com" }],
+  creator: "eeezeen // Jinwon Lee",
+  publisher: "eeezeen // Jinwon Lee",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL('https://eeezeen.com'),
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://eeezeen.com',
+    siteName: 'eeezeen',
+    title: 'eeezeen // Jinwon Lee',
+    description: 'Humanizing Technology',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'eeezeen // Jinwon Lee',
+      },
+      {
+        url: '/og-image-square.jpg',
+        width: 1080,
+        height: 1080,
+        alt: 'eeezeen // Jinwon Lee',
+      }
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'eeezeen - Jinwon Lee',
+    description: 'AI Design Engineer - Humanizing Technology',
+    creator: '@eeezeen',
+    images: ['/og-image.jpg'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  // verification: {
+  //   google: 'your-google-site-verification',
+  //   yandex: 'your-yandex-verification',
+  //   yahoo: 'your-yahoo-verification',
+  // },
+  alternates: {
+    canonical: 'https://eeezeen.com',
+  },
 };
 
 export default function RootLayout({
