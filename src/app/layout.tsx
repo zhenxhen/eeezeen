@@ -5,8 +5,8 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import MainContent from "../components/MainContent";
 
 export const metadata: Metadata = {
-  title: "eeezeen - Jinwon Lee",
-  description: "AI Design Engineer - Humanizing Technology",
+  title: "eeezeen // Jinwon Lee",
+  description: "Humanizing Technology",
   keywords: ["AI Design", "UX Design", "Interaction Design", "Creative Computing", "Samsung Electronics"],
   authors: [{ name: "Jinwon Lee", url: "https://eeezeen.com" }],
   creator: "eeezeen // Jinwon Lee",
@@ -17,6 +17,29 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL('https://eeezeen.com'),
+  icons: {
+    icon: [
+      { url: 'favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: 'favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+    ],
+    shortcut: 'favicon.ico',
+    apple: 'apple-touch-icon.png',
+    other: [
+      {
+        rel: 'android-chrome-192x192',
+        url: 'android-chrome-192x192.png',
+        sizes: '192x192',
+        type: 'image/png',
+      },
+      {
+        rel: 'android-chrome-512x512',
+        url: 'android-chrome-512x512.png',
+        sizes: '512x512',
+        type: 'image/png',
+      },
+    ],
+  },
+  manifest: 'site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -41,8 +64,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'eeezeen - Jinwon Lee',
-    description: 'AI Design Engineer - Humanizing Technology',
+    title: 'eeezeen // Jinwon Lee',
+    description: 'Humanizing Technology',
     creator: '@eeezeen',
     images: ['/og-image.jpg'],
   },
@@ -76,6 +99,10 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/mgo1umb.css" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
         <script dangerouslySetInnerHTML={{
           __html: `
             // 우클릭 방지
