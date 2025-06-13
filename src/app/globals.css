@@ -1030,9 +1030,9 @@ p, h1, h2, h3, h4, h5, h6, span, a, button, div {
     left: 0;
     right: 0;
     bottom: -50%; /* 헤더 백그라운드 영역을 1.5배로 확장 */
-    background: rgba(0, 0, 0, 0.4); /* 50%에서 시작하도록 더 연하게 */
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(0, 0, 0, .1); /* 50%에서 시작하도록 더 연하게 */
+    backdrop-filter: blur(50px);
+    -webkit-backdrop-filter: blur(50px);
     mask: linear-gradient(to bottom, black 0%, black 10%, rgba(0,0,0,0.5) 60%, transparent 100%);
     -webkit-mask: linear-gradient(to bottom, black 10%, black 30%, rgba(0,0,0,0.1) 90%, transparent 100%);
     pointer-events: none;
