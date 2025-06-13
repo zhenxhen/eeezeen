@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigation } from '../LeftNavigation';
 import { type ProjectMainData } from '../../data';
 
@@ -25,29 +25,56 @@ export default function ProjectGrid({
 }: ProjectGridProps) {
   const { isMobile } = useNavigation();
   const [responsiveGridClass, setResponsiveGridClass] = useState('grid-cols-3');
+  const videoRefs = useRef<{ [key: string]: HTMLVideoElement | null }>({});
   
-  // 모바일/태블릿에서만 반응형 그리드 클래스 결정
+  // 모바일/태블릿 감지
   useEffect(() => {
-    if (isMobile) {
-      const updateGridClass = () => {
-        if (typeof window !== 'undefined') {
-          const width = window.innerWidth;
-          if (width <= 768) {
-            setResponsiveGridClass('grid-cols-1'); // 모바일: 1단
-          } else if (width <= 1024) {
-            setResponsiveGridClass('grid-cols-2'); // 태블릿: 2단
+    const checkDevice = () => {
+      if (typeof window !== 'undefined') {
+        const width = window.innerWidth;
+        setResponsiveGridClass(width <= 768 ? 'grid-cols-1' : width <= 1024 ? 'grid-cols-2' : 'grid-cols-3');
+      }
+    };
+
+    checkDevice();
+    window.addEventListener('resize', checkDevice);
+    
+    return () => {
+      window.removeEventListener('resize', checkDevice);
+    };
+  }, []);
+
+  // 비디오 자동 재생 설정
+  useEffect(() => {
+    const handleResize = () => {
+      const isTabletOrMobile = window.innerWidth <= 1024;
+      
+      // 모든 비디오 요소에 대해 설정 적용
+      Object.values(videoRefs.current).forEach((video) => {
+        if (video) {
+          if (isTabletOrMobile) {
+            video.play().catch(() => {
+              // 자동 재생이 실패할 경우 무시
+            });
+            video.style.opacity = '1';
+          } else {
+            video.pause();
+            video.style.opacity = '0';
           }
         }
-      };
+      });
+    };
 
-      updateGridClass();
-      window.addEventListener('resize', updateGridClass);
-      
-      return () => {
-        window.removeEventListener('resize', updateGridClass);
-      };
-    }
-  }, [isMobile]);
+    // 초기 설정
+    handleResize();
+    
+    // 리사이즈 이벤트 리스너 등록
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   // PC에서는 props의 gridClass 사용, 모바일에서는 반응형 클래스 사용
   const finalGridClass = isMobile ? responsiveGridClass : gridClass;
@@ -67,13 +94,13 @@ export default function ProjectGrid({
           <div 
             className="aspect-square bg-gray-900 rounded-lg overflow-hidden mb-4 relative project-media-container"
             onMouseEnter={(e) => {
-              if (project.video) {
+              if (project.video && window.innerWidth > 1024) {
                 const videoElement = e.currentTarget.querySelector('video') as HTMLVideoElement;
                 onVideoHover(videoElement, true);
               }
             }}
             onMouseLeave={(e) => {
-              if (project.video) {
+              if (project.video && window.innerWidth > 1024) {
                 const videoElement = e.currentTarget.querySelector('video') as HTMLVideoElement;
                 onVideoHover(videoElement, false);
               }
@@ -88,14 +115,19 @@ export default function ProjectGrid({
                   fill
                   className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                {/* 호버 시 비디오 */}
+                {/* 비디오 */}
                 <video
+                  ref={(el) => {
+                    videoRefs.current[project.id] = el;
+                  }}
                   src={project.video}
-                  className="absolute inset-0 w-full h-full object-cover opacity-0"
+                  className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
                   muted
                   playsInline
-                  preload="metadata"
+                  preload="none"
+                  loop
                 />
               </>
             ) : (
