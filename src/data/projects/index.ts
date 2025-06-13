@@ -2,6 +2,7 @@ import type { ProjectData } from '../types/project';
 import { guansang } from './guansang';
 import { review } from './review';
 import { fingerController } from './finger-controller';
+import { hatefulDream } from './hateful-dream';
 import { reminder } from './reminder';
 import { clock } from './clock';
 import { garden } from './garden';
@@ -15,6 +16,7 @@ const projectsInOrder = [
   guansang,
   review,
   fingerController,
+  hatefulDream,
   reminder,
   clock,
   garden,  
@@ -42,14 +44,15 @@ export const allProjects: Record<string, ProjectData> = {
   'guansang': projectsWithAutoIds[0],
   'review': projectsWithAutoIds[1],
   'finger-controller': projectsWithAutoIds[2],
-  'reminder': projectsWithAutoIds[3],
-  'clock': projectsWithAutoIds[4],
-  'garden': projectsWithAutoIds[5],
-  'bloomy': projectsWithAutoIds[6],
-  'view': projectsWithAutoIds[7],
-  'aerobox': projectsWithAutoIds[8],
-  'wheeling': projectsWithAutoIds[9],
+  'hateful-dream': projectsWithAutoIds[3],
+  'reminder': projectsWithAutoIds[4],
+  'clock': projectsWithAutoIds[5],
+  'garden': projectsWithAutoIds[6],
+  'bloomy': projectsWithAutoIds[7],
+  'view': projectsWithAutoIds[8],
+  'aerobox': projectsWithAutoIds[9],
+  'wheeling': projectsWithAutoIds[10],
 };
 
 // 개별 프로젝트 export (필요시 직접 접근 가능)
-export { guansang, review, fingerController, reminder, clock, garden, bloomy, view, aerobox, wheeling }; 
+export { guansang, review, fingerController, hatefulDream, reminder, clock, garden, bloomy, view, aerobox, wheeling }; 
