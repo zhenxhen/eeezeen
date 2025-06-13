@@ -5,12 +5,12 @@ import { ThemeProvider } from "../contexts/ThemeContext";
 import MainContent from "../components/MainContent";
 
 export const metadata: Metadata = {
-  title: "eeezeen // Jinwon Lee",
+  title: "eeezeen",
   description: "Humanizing Technology",
   keywords: ["AI Design", "UX Design", "Interaction Design", "Creative Computing", "Samsung Electronics"],
   authors: [{ name: "Jinwon Lee", url: "https://eeezeen.com" }],
-  creator: "eeezeen // Jinwon Lee",
-  publisher: "eeezeen // Jinwon Lee",
+  creator: "eeezeen",
+  publisher: "eeezeen",
   formatDetection: {
     email: false,
     address: false,
