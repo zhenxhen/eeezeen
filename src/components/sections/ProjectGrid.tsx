@@ -106,6 +106,7 @@ export default function ProjectGrid({
                     alt={project.title}
                     fill
                     className="object-cover"
+                    priority
                     onError={(e) => {
                       e.currentTarget.style.display = 'none';
                     }}

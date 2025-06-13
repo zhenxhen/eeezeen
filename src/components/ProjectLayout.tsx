@@ -90,7 +90,7 @@ export default function ProjectLayout({
           } : {}
         }
       >
-        <Link href="/works" style={{ marginRight: '10px', textDecoration: 'underline' }}>
+        <Link href="/" style={{ marginRight: '10px', textDecoration: 'underline' }}>
           works
         </Link>
         <span className="text-white mr-4">&gt;</span>
