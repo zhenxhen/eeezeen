@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falling Images with Physics</title>
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
+    
+    <!-- Adobe Fonts (Typekit) -->
+    <script>
+        (function(d) {
+            var config = {
+                kitId: 'tlq0bwh',
+                scriptTimeout: 3000,
+                async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+    </script>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/enroll.css">
+    <link rel="stylesheet" href="css/party.css">
+    <link rel="stylesheet" href="css/popups.css">
+</head>
+<body>
+    <!-- 카운트다운 타이머 -->
+    <div class="countdown" id="countdown">00:00:00</div>
+
+    <!-- Enroll 페이지 -->
+    <div class="enroll-page" id="enrollPage">
+        <img src="img/enroll.png" alt="enroll" class="enroll-image" onclick="showEnrollForm()">
+        <div class="enroll-text" onclick="skipToParty()">
+            <p>or already enrolled?</p>
+        </div>
+    </div>
+
+    <!-- Enroll 폼 팝업 -->
+    <div class="enroll-form-popup" id="enrollFormPopup">
+        <div class="enroll-form-box">
+            <div class="form-field">
+                <label class="form-label">nick name</label>
+                <input type="text" class="form-input" id="userName" placeholder="eugene" oninput="validateEnrollForm()">
+            </div>
+            <div class="form-field">
+                <label class="form-label">phone number</label>
+                <input type="tel" class="form-input" id="userPhone" placeholder="010-0000-0000" oninput="validateEnrollForm()">
+            </div>
+            <button class="enroll-submit-button" id="enrollButton" onclick="submitEnrollForm()">enroll</button>
+            <p style="margin-top: 15px; font-size: 14px; color: #666;">정보는 추후 일정 및 장소 공지를 위해서만 사용됩니다.</p>
+        </div>
+    </div>
+
+    <!-- 파티 페이지 -->
+    <div class="party-page" id="partyPage">
+        <div class="info">
+            <h3>see you,</h3>
+            <h3>{username}</h3>
+        </div>
+        
+        <div id="canvas-container">
+            <canvas id="world"></canvas>
+        </div>
+
+        <!-- 팝업 오버레이 -->
+        <div class="popup-overlay" id="popupOverlay">
+            <div class="popup-box">
+                <p>파티는 별도의 입장료 없이,<br>포틀락 파티로 진행합니다.<br>함께 먹고 마실 것들을 챙겨와주세요.</p>
+                <br> 
+                <p style="font-family: 'sunflower', sans-serif; font-weight: 900; font-size: 12px;">+ 1 free drink for enrolled mates:)</p>
+            </div>
+        </div>
+
+        <!-- 맵 팝업 오버레이 -->
+        <div class="popup-overlay" id="mapPopupOverlay">
+            <div class="popup-box">
+                <p>장소가 확정되는 대로, 적어주신 연락처로 연락드릴게요:)</p>
+            </div>
+        </div>
+
+        <!-- 음악 팝업 오버레이 -->
+        <div class="popup-overlay" id="musicPopupOverlay">
+            <div class="popup-box">
+                <div class="music-popup-content">
+                    <h3 style="margin-bottom: 15px;">Party List-up</h3>
+                    <div class="dj-list">
+                        <h3>6pm: chill time</h3>
+                        <h3>7pm: TBD / house</h3>
+                        <h3>8pm: TBD / deep techno</h3>
+                        <h3>9pm: TBD / house techno</h3>
+                        <h3>10pm: TBD / special stage </h3>
+                        <h3>10:30pm: <a href="https://www.instagram.com/eeezeen" target="_blank">@eeezeen</a> Live coding DJ</h3>
+                    </div>
+                </div>
+                <button class="playlist-button" onclick="openPlaylist()">플레이리스트 추가하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/config.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/enrollment.js"></script>
+    <script src="js/physics.js"></script>
+    <script src="js/gyroscope.js"></script>
+    <script src="js/imageHandler.js"></script>
+    <script src="js/interactions.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html> 
