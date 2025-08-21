@@ -1,21 +1,28 @@
 'use client';
 
 import { useNavigation } from './LeftNavigation';
+import { useEffect, useState } from 'react';
 
 interface MainContentProps {
   children: React.ReactNode;
 }
 
 export default function MainContent({ children }: MainContentProps) {
-  const { isCollapsed } = useNavigation();
+  const { isCollapsed, isMobile } = useNavigation();
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   return (
     <div 
-      className="flex-1 overflow-auto"
+      className="main-content"
       style={{
-        marginLeft: isCollapsed ? 0 : 260,
-        height: '100vh',
-        transition: 'margin-left 0.3s ease'
+        // 클라이언트에서만 동적 스타일 적용
+        ...(isClient && !isMobile && {
+          marginLeft: isCollapsed ? 0 : 260,
+        })
       }}
     >
       {children}

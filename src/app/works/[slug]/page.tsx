@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import ProjectLayout from '../../../components/ProjectLayout';
-import { projectDetailData, getProjectIcon, allProjects } from '../../../data/projects';
+import { projectDetailData, getProjectIcon, allProjects } from '../../../data';
 import ProjectPageClient from './ProjectPageClient';
 
 // 정적 사이트 생성을 위한 파라미터 목록
@@ -29,7 +29,12 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
         year={projectData.year}
         subtitle={projectData.subtitle}
         description={projectData.description}
-        images={projectData.images}
+        media={projectData.media}
+        media2={projectData.media2}
+        media3={projectData.media3}
+        reviews={projectData.reviews}
+        link={projectData.link}
+        media4={projectData.media4}
         tools={projectData.tools}
         icon={projectIcon}
       />
