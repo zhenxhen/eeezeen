@@ -148,9 +148,9 @@ class InteractionManager {
             }, 1000);
         }
         // 사진 앱 딥링크인 경우 특별 처리
-        else if (clickedBody.imageLink.startsWith('photos-redirect://')) {
+        else if (clickedBody.imageLink.startsWith('photos://')) {
             const appLink = clickedBody.imageLink;
-            const webFallback = clickedBody.imageLink.replace('photos-redirect://', 'https://');
+            const webFallback = clickedBody.imageLink.replace('photos://', 'https://');
             
             // 앱 실행 감지를 위한 변수들
             let appOpened = false;
