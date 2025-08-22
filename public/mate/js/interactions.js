@@ -101,20 +101,56 @@ class InteractionManager {
             const appLink = clickedBody.imageLink;
             const webFallback = CONFIG.INSTAGRAM.web;
             
+            // 페이지가 숨겨졌는지 확인하는 변수
+            let appOpened = false;
+            
+            // 페이지가 숨겨지면 앱이 열린 것으로 간주
+            const handleVisibilityChange = () => {
+                if (document.hidden) {
+                    appOpened = true;
+                }
+            };
+            
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            
+            // 앱 열기 시도
             window.location.href = appLink;
+            
+            // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
             setTimeout(() => {
-                window.open(webFallback, '_blank');
-            }, 500);
+                document.removeEventListener('visibilitychange', handleVisibilityChange);
+                if (!appOpened) {
+                    window.open(webFallback, '_blank');
+                }
+            }, 1000);
         }
         // 사진 앱 딥링크인 경우 특별 처리
         else if (clickedBody.imageLink.startsWith('photos-redirect://')) {
             const appLink = clickedBody.imageLink;
             const webFallback = clickedBody.imageLink.replace('photos-redirect://', 'https://');
             
+            // 페이지가 숨겨졌는지 확인하는 변수
+            let appOpened = false;
+            
+            // 페이지가 숨겨지면 앱이 열린 것으로 간주
+            const handleVisibilityChange = () => {
+                if (document.hidden) {
+                    appOpened = true;
+                }
+            };
+            
+            document.addEventListener('visibilitychange', handleVisibilityChange);
+            
+            // 앱 열기 시도
             window.location.href = appLink;
+            
+            // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
             setTimeout(() => {
-                window.open(webFallback, '_blank');
-            }, 500);
+                document.removeEventListener('visibilitychange', handleVisibilityChange);
+                if (!appOpened) {
+                    window.open(webFallback, '_blank');
+                }
+            }, 1000);
         }
         else {
             // 일반 링크는 새 창에서 열기
@@ -153,11 +189,28 @@ class PopupManager {
         // 팝업 닫기
         this.closeMusicPopup();
         
-        // 애플뮤직 앱 열기
+        // 페이지가 숨겨졌는지 확인하는 변수
+        let appOpened = false;
+        
+        // 페이지가 숨겨지면 앱이 열린 것으로 간주
+        const handleVisibilityChange = () => {
+            if (document.hidden) {
+                appOpened = true;
+            }
+        };
+        
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+        
+        // 애플뮤직 앱 열기 시도
         window.location.href = CONFIG.APPLE_MUSIC.app;
+        
+        // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
         setTimeout(() => {
-            window.open(CONFIG.APPLE_MUSIC.web, '_blank');
-        }, 500);
+            document.removeEventListener('visibilitychange', handleVisibilityChange);
+            if (!appOpened) {
+                window.open(CONFIG.APPLE_MUSIC.web, '_blank');
+            }
+        }, 1000);
     }
 }
 
