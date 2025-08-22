@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO 메타데이터 -->
     <title>MATE : party</title>
     <meta name="description" content="invitation letter">
     <meta name="keywords" content="mate, party, live coding, techno, house, music, event, free entry">
@@ -12,20 +11,17 @@
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     
-    <!-- Open Graph 메타데이터 (소셜 미디어 공유용) -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="MATE">
     <meta property="og:description" content="invitation letter">
     <meta property="og:url" content="https://www.eeezeen.com/mate">
     <meta property="og:site_name" content="MATE : party">
     <meta property="og:locale" content="en_US">
-    <!-- 이미지는 1200x630px 권장 -->
     <meta property="og:image" content="https://www.eeezeen.com/mate/img/OG.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="MATE : party">
-    
-    <!-- Twitter Card 메타데이터 -->
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="MATE : party">
     <meta name="twitter:description" content="invitation letter">
@@ -33,27 +29,22 @@
     <meta name="twitter:site" content="@eeezeen">
     <meta name="twitter:creator" content="@eeezeen">
     
-    <!-- 파비콘 및 앱 아이콘 -->
     <link rel="icon" type="image/x-icon" href="img/fav/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="img/fav/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/fav/favicon-16x16.png">
     <link rel="apple-touch-icon" sizes="180x180" href="img/fav/apple-touch-icon.png">
     <link rel="manifest" href="img/fav/site.webmanifest">
     
-    <!-- 모바일 앱 메타데이터 -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="MATE Party">
     <meta name="theme-color" content="#000000">
     
-    <!-- 보안 및 성능 -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
-    <!-- 검색 엔진 최적화 -->
     <link rel="canonical" href="https://www.eeezeen.com/mate">
     
-    <!-- 구조화된 데이터 (JSON-LD) -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -78,10 +69,10 @@
     }
     </script>
     
-    <!-- External Libraries -->
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js"></script>
     
-    <!-- Adobe Fonts (Typekit) -->
+
     <script>
         (function(d) {
             var config = {
@@ -93,7 +84,6 @@
         })(document);
     </script>
     
-    <!-- CSS Files -->
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/enroll.css">
@@ -101,10 +91,8 @@
     <link rel="stylesheet" href="css/popups.css">
 </head>
 <body>
-    <!-- 카운트다운 타이머 -->
     <div class="countdown" id="countdown">00:00:00</div>
 
-    <!-- Enroll 페이지 -->
     <div class="enroll-page" id="enrollPage">
         <img src="img/enroll.png" alt="enroll" class="enroll-image" onclick="showEnrollForm()">
         <div class="enroll-text" onclick="skipToParty()">
@@ -112,7 +100,6 @@
         </div>
     </div>
 
-    <!-- Enroll 폼 팝업 -->
     <div class="enroll-form-popup" id="enrollFormPopup">
         <div class="enroll-form-box">
             <div class="form-field">
@@ -128,7 +115,6 @@
         </div>
     </div>
 
-    <!-- 파티 페이지 -->
     <div class="party-page" id="partyPage">
         <div class="info">
             <h3>see you,</h3>
@@ -139,7 +125,6 @@
             <canvas id="world"></canvas>
         </div>
 
-        <!-- 팝업 오버레이 -->
         <div class="popup-overlay" id="popupOverlay">
             <div class="popup-box">
                 <p>파티는 별도의 입장료 없이,<br>포틀락 파티로 진행합니다.<br>함께 먹고 마실 것들을 챙겨와주세요.</p>
@@ -148,10 +133,8 @@
             </div>
         </div>
 
-        <!-- 맵 팝업 오버레이 -->
         <div class="popup-overlay" id="mapPopupOverlay">
             <div class="popup-box map-popup">
-                <!-- 이미지 슬라이드 -->
                 <div class="image-slider">
                     <div class="slider-container">
                         <img src="img/place1.png" alt="장소 이미지 1" class="slide-image active">
@@ -167,7 +150,6 @@
                     </div>
                 </div>
                 
-                <!-- 장소 정보 -->
                 <div class="location-info">
                     <p class="address"> <br> 서울 성동구 왕십리로16가길 28 성수밤부 36 8F (옥상) </p>
                     <p class="address" style="color: #666;">반려동물 동반 환영! 기저귀 착용 부탁드려요:)</p>
@@ -176,7 +158,6 @@
             </div>
         </div>
 
-        <!-- 음악 팝업 오버레이 -->
         <div class="popup-overlay" id="musicPopupOverlay">
             <div class="popup-box">
                 <div class="music-popup-content">
@@ -195,7 +176,6 @@
         </div>
     </div>
 
-    <!-- JavaScript Files -->
     <script src="js/config.js"></script>
     <script src="js/countdown.js"></script>
     <script src="js/enrollment.js"></script>
