@@ -46,10 +46,10 @@ const CONFIG = {
     CALENDAR_EVENT: {
         title: "Mate🎉",
         description: "See you at the party!",
-        location: "Sungsu-dong (TBD)",
+        location: "서울 성동구 왕십리로16가길 28 성수밤부 36 8F",
         startTime: new Date(2025, 8, 6, 19, 0, 0),
         endTime: new Date(2025, 8, 6, 23, 0, 0),
-        url: "https://www.eeezeen.com"
+        url: "https://www.eeezeen.com/mate"
     }
 };
 

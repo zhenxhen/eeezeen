@@ -181,10 +181,6 @@
     transition: background 0.3s ease;
 }
 
-.naver-map-btn:hover {
-    background: #02B050;
-}
-
 /* 모바일 반응형 */
 @media (max-width: 480px) {
     .map-popup {
