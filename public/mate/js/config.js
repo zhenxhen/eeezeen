@@ -27,7 +27,7 @@ const CONFIG = {
         { path: 'img/glass.png', link: 'show-popup' },
         { path: 'img/host.png', link: 'instagram://user?username=eeezeen' },
         { path: 'img/map.png', link: 'show-map-popup' },
-        { path: 'img/photo.png', link: 'photos://www.icloud.com/sharedalbum/#B2I5oqs3qIi1Kwo' },
+        { path: 'img/photo.png', link: 'https://www.icloud.com/sharedalbum/#B2I5oqs3qIi1Kwo' },
         { path: 'img/playllist.png', link: 'show-music-popup' }
     ],
     

@@ -146,57 +146,52 @@ class InteractionManager {
                     }
                 }
             }, 1000);
-        }
-        // 사진 앱 딥링크인 경우 특별 처리
-        else if (clickedBody.imageLink.startsWith('photos://')) {
-            const appLink = clickedBody.imageLink;
-            const webFallback = clickedBody.imageLink.replace('photos://', 'https://');
-            
-            // 앱 실행 감지를 위한 변수들
-            let appOpened = false;
-            let startTime = Date.now();
-            
-            // 페이지 가시성 변경 감지
-            const handleVisibilityChange = () => {
-                if (document.hidden) {
-                    appOpened = true;
                 }
-            };
+        // iCloud 공유 앨범인 경우 특별 처리 (iOS 사진 앱으로 연결 시도)
+        else if (clickedBody.imageLink.includes('icloud.com/sharedalbum')) {
+            // iOS에서는 사진 앱으로 열기 시도
+            const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
             
-            // 페이지 포커스 잃음 감지 (앱으로 전환됨)
-            const handleBlur = () => {
-                appOpened = true;
-            };
-            
-            // 브라우저가 비활성화됨 감지
-            const handlePageHide = () => {
-                appOpened = true;
-            };
-            
-            // 이벤트 리스너 등록
-            document.addEventListener('visibilitychange', handleVisibilityChange);
-            window.addEventListener('blur', handleBlur);
-            window.addEventListener('pagehide', handlePageHide);
-            
-            // 앱 열기 시도
-            window.location.href = appLink;
-            
-            // 정확한 앱 실행 여부 확인
-            setTimeout(() => {
-                // 이벤트 리스너 정리
-                document.removeEventListener('visibilitychange', handleVisibilityChange);
-                window.removeEventListener('blur', handleBlur);
-                window.removeEventListener('pagehide', handlePageHide);
+            if (isiOS) {
+                // 앱 실행 감지를 위한 변수들
+                let appOpened = false;
+                let startTime = Date.now();
                 
-                // 앱이 열리지 않았고, 페이지가 여전히 활성상태면 웹 팔백 실행
-                if (!appOpened && !document.hidden && document.hasFocus()) {
-                    const timeElapsed = Date.now() - startTime;
-                    // 충분한 시간이 지났는데도 페이지가 활성상태면 앱이 없는 것으로 판단
-                    if (timeElapsed > 800) {
-                        window.open(webFallback, '_blank');
+                // 페이지 가시성 변경 감지
+                const handleVisibilityChange = () => {
+                    if (document.hidden) {
+                        appOpened = true;
                     }
-                }
-            }, 1000);
+                };
+                
+                // 페이지 포커스 잃음 감지
+                const handleBlur = () => {
+                    appOpened = true;
+                };
+                
+                // 이벤트 리스너 등록
+                document.addEventListener('visibilitychange', handleVisibilityChange);
+                window.addEventListener('blur', handleBlur);
+                
+                // iOS 사진 앱으로 열기 시도 (Universal Link 방식)
+                window.location.href = clickedBody.imageLink;
+                
+                // 앱이 열리지 않으면 새 창에서 웹 버전 열기
+                setTimeout(() => {
+                    document.removeEventListener('visibilitychange', handleVisibilityChange);
+                    window.removeEventListener('blur', handleBlur);
+                    
+                    if (!appOpened && !document.hidden && document.hasFocus()) {
+                        const timeElapsed = Date.now() - startTime;
+                        if (timeElapsed > 800) {
+                            window.open(clickedBody.imageLink, '_blank');
+                        }
+                    }
+                }, 1000);
+            } else {
+                // iOS가 아닌 경우 바로 웹에서 열기
+                window.open(clickedBody.imageLink, '_blank');
+            }
         }
         else {
             // 일반 링크는 새 창에서 열기
