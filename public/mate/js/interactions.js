@@ -101,26 +101,49 @@ class InteractionManager {
             const appLink = clickedBody.imageLink;
             const webFallback = CONFIG.INSTAGRAM.web;
             
-            // 페이지가 숨겨졌는지 확인하는 변수
+            // 앱 실행 감지를 위한 변수들
             let appOpened = false;
+            let startTime = Date.now();
             
-            // 페이지가 숨겨지면 앱이 열린 것으로 간주
+            // 페이지 가시성 변경 감지
             const handleVisibilityChange = () => {
                 if (document.hidden) {
                     appOpened = true;
                 }
             };
             
+            // 페이지 포커스 잃음 감지 (앱으로 전환됨)
+            const handleBlur = () => {
+                appOpened = true;
+            };
+            
+            // 브라우저가 비활성화됨 감지
+            const handlePageHide = () => {
+                appOpened = true;
+            };
+            
+            // 이벤트 리스너 등록
             document.addEventListener('visibilitychange', handleVisibilityChange);
+            window.addEventListener('blur', handleBlur);
+            window.addEventListener('pagehide', handlePageHide);
             
             // 앱 열기 시도
             window.location.href = appLink;
             
-            // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
+            // 정확한 앱 실행 여부 확인
             setTimeout(() => {
+                // 이벤트 리스너 정리
                 document.removeEventListener('visibilitychange', handleVisibilityChange);
-                if (!appOpened) {
-                    window.open(webFallback, '_blank');
+                window.removeEventListener('blur', handleBlur);
+                window.removeEventListener('pagehide', handlePageHide);
+                
+                // 앱이 열리지 않았고, 페이지가 여전히 활성상태면 웹 팔백 실행
+                if (!appOpened && !document.hidden && document.hasFocus()) {
+                    const timeElapsed = Date.now() - startTime;
+                    // 충분한 시간이 지났는데도 페이지가 활성상태면 앱이 없는 것으로 판단
+                    if (timeElapsed > 800) {
+                        window.open(webFallback, '_blank');
+                    }
                 }
             }, 1000);
         }
@@ -129,26 +152,49 @@ class InteractionManager {
             const appLink = clickedBody.imageLink;
             const webFallback = clickedBody.imageLink.replace('photos-redirect://', 'https://');
             
-            // 페이지가 숨겨졌는지 확인하는 변수
+            // 앱 실행 감지를 위한 변수들
             let appOpened = false;
+            let startTime = Date.now();
             
-            // 페이지가 숨겨지면 앱이 열린 것으로 간주
+            // 페이지 가시성 변경 감지
             const handleVisibilityChange = () => {
                 if (document.hidden) {
                     appOpened = true;
                 }
             };
             
+            // 페이지 포커스 잃음 감지 (앱으로 전환됨)
+            const handleBlur = () => {
+                appOpened = true;
+            };
+            
+            // 브라우저가 비활성화됨 감지
+            const handlePageHide = () => {
+                appOpened = true;
+            };
+            
+            // 이벤트 리스너 등록
             document.addEventListener('visibilitychange', handleVisibilityChange);
+            window.addEventListener('blur', handleBlur);
+            window.addEventListener('pagehide', handlePageHide);
             
             // 앱 열기 시도
             window.location.href = appLink;
             
-            // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
+            // 정확한 앱 실행 여부 확인
             setTimeout(() => {
+                // 이벤트 리스너 정리
                 document.removeEventListener('visibilitychange', handleVisibilityChange);
-                if (!appOpened) {
-                    window.open(webFallback, '_blank');
+                window.removeEventListener('blur', handleBlur);
+                window.removeEventListener('pagehide', handlePageHide);
+                
+                // 앱이 열리지 않았고, 페이지가 여전히 활성상태면 웹 팔백 실행
+                if (!appOpened && !document.hidden && document.hasFocus()) {
+                    const timeElapsed = Date.now() - startTime;
+                    // 충분한 시간이 지났는데도 페이지가 활성상태면 앱이 없는 것으로 판단
+                    if (timeElapsed > 800) {
+                        window.open(webFallback, '_blank');
+                    }
                 }
             }, 1000);
         }
@@ -189,26 +235,49 @@ class PopupManager {
         // 팝업 닫기
         this.closeMusicPopup();
         
-        // 페이지가 숨겨졌는지 확인하는 변수
+        // 앱 실행 감지를 위한 변수들
         let appOpened = false;
+        let startTime = Date.now();
         
-        // 페이지가 숨겨지면 앱이 열린 것으로 간주
+        // 페이지 가시성 변경 감지
         const handleVisibilityChange = () => {
             if (document.hidden) {
                 appOpened = true;
             }
         };
         
+        // 페이지 포커스 잃음 감지 (앱으로 전환됨)
+        const handleBlur = () => {
+            appOpened = true;
+        };
+        
+        // 브라우저가 비활성화됨 감지
+        const handlePageHide = () => {
+            appOpened = true;
+        };
+        
+        // 이벤트 리스너 등록
         document.addEventListener('visibilitychange', handleVisibilityChange);
+        window.addEventListener('blur', handleBlur);
+        window.addEventListener('pagehide', handlePageHide);
         
         // 애플뮤직 앱 열기 시도
         window.location.href = CONFIG.APPLE_MUSIC.app;
         
-        // 일정 시간 후 앱이 열리지 않았으면 웹 페이지 열기
+        // 정확한 앱 실행 여부 확인
         setTimeout(() => {
+            // 이벤트 리스너 정리
             document.removeEventListener('visibilitychange', handleVisibilityChange);
-            if (!appOpened) {
-                window.open(CONFIG.APPLE_MUSIC.web, '_blank');
+            window.removeEventListener('blur', handleBlur);
+            window.removeEventListener('pagehide', handlePageHide);
+            
+            // 앱이 열리지 않았고, 페이지가 여전히 활성상태면 웹 팔백 실행
+            if (!appOpened && !document.hidden && document.hasFocus()) {
+                const timeElapsed = Date.now() - startTime;
+                // 충분한 시간이 지났는데도 페이지가 활성상태면 앱이 없는 것으로 판단
+                if (timeElapsed > 800) {
+                    window.open(CONFIG.APPLE_MUSIC.web, '_blank');
+                }
             }
         }, 1000);
     }
