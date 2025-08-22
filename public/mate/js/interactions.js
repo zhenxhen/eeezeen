@@ -278,6 +278,45 @@ class PopupManager {
     }
 }
 
+// 맵 슬라이더 관리
+class MapSlider {
+    static currentSlide = 0;
+    static totalSlides = 3;
+    
+    static nextSlide() {
+        this.currentSlide = (this.currentSlide + 1) % this.totalSlides;
+        this.updateSlider();
+    }
+    
+    static prevSlide() {
+        this.currentSlide = (this.currentSlide - 1 + this.totalSlides) % this.totalSlides;
+        this.updateSlider();
+    }
+    
+    static goToSlide(index) {
+        this.currentSlide = index;
+        this.updateSlider();
+    }
+    
+    static updateSlider() {
+        // 이미지 업데이트
+        const images = document.querySelectorAll('.slide-image');
+        const dots = document.querySelectorAll('.slider-dots .dot');
+        
+        images.forEach((img, index) => {
+            img.classList.toggle('active', index === this.currentSlide);
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === this.currentSlide);
+        });
+    }
+    
+    static openNaverMap() {
+        window.open('https://naver.me/xKtzSyYv', '_blank');
+    }
+}
+
 // 캘린더 관리
 class CalendarManager {
     // ICS 파일 생성 및 다운로드 함수

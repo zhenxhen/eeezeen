@@ -150,8 +150,28 @@
 
         <!-- 맵 팝업 오버레이 -->
         <div class="popup-overlay" id="mapPopupOverlay">
-            <div class="popup-box">
-                <p>장소가 확정되는 대로, 적어주신 연락처로 연락드릴게요:)</p>
+            <div class="popup-box map-popup">
+                <!-- 이미지 슬라이드 -->
+                <div class="image-slider">
+                    <div class="slider-container">
+                        <img src="img/place1.png" alt="장소 이미지 1" class="slide-image active">
+                        <img src="img/place2.png" alt="장소 이미지 2" class="slide-image">
+                        <img src="img/place3.png" alt="장소 이미지 3" class="slide-image">
+                    </div>
+                    <button class="slider-btn prev-btn" onclick="MapSlider.prevSlide()">‹</button>
+                    <button class="slider-btn next-btn" onclick="MapSlider.nextSlide()">›</button>
+                    <div class="slider-dots">
+                        <span class="dot active" onclick="MapSlider.goToSlide(0)"></span>
+                        <span class="dot" onclick="MapSlider.goToSlide(1)"></span>
+                        <span class="dot" onclick="MapSlider.goToSlide(2)"></span>
+                    </div>
+                </div>
+                
+                <!-- 장소 정보 -->
+                <div class="location-info">
+                    <p class="address"> <br> 서울 성동구 왕십리로16가길 28 성수밤부 36 8F</p>
+                    <button class="naver-map-btn" onclick="MapSlider.openNaverMap()">네이버 지도</button>
+                </div>
             </div>
         </div>
 
